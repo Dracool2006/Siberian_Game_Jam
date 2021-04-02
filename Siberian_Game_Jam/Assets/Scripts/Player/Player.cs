@@ -38,12 +38,6 @@ public class Player : PawnBase
     public override void Movement(Vector2 direction, float speed)
     {
 
-      /*float moveVertical = Input.GetAxis("Vertical");
-      float moveHorizontal = Input.GetAxis("Horizontal");
-      Vector2 movement = new Vector3(moveHorizontal, moveVertical);*/
-    //  Vector2 velocity = movement.normalized * speed;
-
-    //  rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
       rb.AddForce(direction * speed * Time.fixedDeltaTime);
 
     }

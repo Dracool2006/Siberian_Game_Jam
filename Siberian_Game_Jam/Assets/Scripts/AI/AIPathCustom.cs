@@ -26,6 +26,7 @@ public class AIPathCustom : MonoBehaviour
   public Enemy enemy;
   //public float movementSpeed = 10.0f;
   public float nextWaypointOfDistance = 1f;
+  public float minDistanceToPlayer = 2f;
 
   Path path;
   Seeker seeker;
@@ -59,7 +60,7 @@ public class AIPathCustom : MonoBehaviour
     void FixedUpdate ()
     {
 
-      if(!(enemy.GetIsDead()))
+      if(enemy.state != States.dead)
         Movement();
       else
         CancelInvoke("UpdatePath");
@@ -117,8 +118,9 @@ public class AIPathCustom : MonoBehaviour
         Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized;
 
         //вызов функции движения из Enemy
-        enemy.Movement(direction, enemy.maxSpeed);
-
+          if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer){
+              enemy.Movement(direction, enemy.maxSpeed);
+          }
         }
         // проверка дистанции до следующей точки
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
