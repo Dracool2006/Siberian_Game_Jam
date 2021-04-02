@@ -41,23 +41,23 @@ public class PawnBase : MonoBehaviour
 
     public void SetIsDead(bool value)
     {
-       isDead = value ;
+       isDead = value;
     }
 
 
     public void SetCurrentHP(int value)
     {
-       currentHP = value ;
+       currentHP = value;
     }
 
     public int GetCurrentHP()
     {
-      return currentHP;
+        return currentHP;
     }
 
     public bool GetIsDead()
     {
-      return isDead;
+        return isDead;
     }
 
 }

@@ -18,15 +18,15 @@ public class PlayerActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetButton("Fire1"))
-      {
-        Attack();
-      }
+        if(Input.GetButton("Fire1"))
+        {
+            Attack();
+        }
 
-      if(Input.GetButtonDown("Submit"))
-      {
+        if(Input.GetButtonDown("Submit"))
+        {
 
-      }
+        }
 
     }
     void FixedUpdate()
@@ -36,11 +36,10 @@ public class PlayerActions : MonoBehaviour
 
     void Attack()
     {
-      if(equippedweapon){
-
-          Debug.Log("Attack");
-          equippedweapon.GetComponent<Gun>().Shoot();
-      }
+        if(equippedweapon){
+            Debug.Log("Attack");
+            equippedweapon.GetComponent<Gun>().Shoot();
+        }
     }
 
 
