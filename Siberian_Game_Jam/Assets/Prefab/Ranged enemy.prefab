@@ -82,6 +82,107 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2851210532077931675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623439220966788957}
+  m_Layer: 0
+  m_Name: OtherEnemyDetectorSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623439220966788957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851210532077931675}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.779999, y: 2.3799996, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 3465091793146459288}
+  m_Father: {fileID: 6721302636804602620}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3727058450903619154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3465091793146459288}
+  - component: {fileID: 9079601657936111822}
+  - component: {fileID: 2347736044147088512}
+  m_Layer: 0
+  m_Name: OtherEnemyDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3465091793146459288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727058450903619154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.463, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 623439220966788957}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9079601657936111822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727058450903619154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98bf4b203b7df048826601da44ed213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &2347736044147088512
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727058450903619154}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.1004765, y: 0.09274769}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16527033, y: 0.1498127}
+  m_EdgeRadius: 0
 --- !u!1 &6719906855575855909
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +232,11 @@ GameObject:
   - component: {fileID: 7540422445587827961}
   - component: {fileID: 5609270985056401516}
   - component: {fileID: 979583792226328607}
+<<<<<<< HEAD
   - component: {fileID: 8306946049698257679}
+=======
+  - component: {fileID: 1105425760081135479}
+>>>>>>> RedneckChan
   m_Layer: 0
   m_Name: Ranged enemy
   m_TagString: Enemy
@@ -152,6 +257,7 @@ Transform:
   m_Children:
   - {fileID: 3871415938704153698}
   - {fileID: 3597986685343879853}
+  - {fileID: 623439220966788957}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -189,8 +295,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  otherEnemyInfoSocket: {fileID: 0}
+  otherEnemyInfo: {fileID: 0}
   enemy: {fileID: 0}
   pawn: {fileID: 0}
+  rayLenght: 1
   nextWaypointOfDistance: 1
   minDistanceToPlayer: 2
 --- !u!114 &6721302636804602623
@@ -284,8 +393,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.12}
-  m_Size: {x: 1.5, y: 2.5}
+  m_Offset: {x: 0, y: -0.72}
+  m_Size: {x: 1.2, y: 1.2}
   m_Direction: 0
 --- !u!114 &5609270985056401516
 MonoBehaviour:
@@ -310,7 +419,11 @@ MonoBehaviour:
   enemyType: 0
   playerDetector: {fileID: 6080649233536388111}
   anim: {fileID: 979583792226328607}
+<<<<<<< HEAD
   PrefabSoul: {fileID: 2825837462086466450, guid: 6e9929f5dd0f58549beecda159c1d331, type: 3}
+=======
+  otherEnemyDetector: {fileID: 9079601657936111822}
+>>>>>>> RedneckChan
 --- !u!95 &979583792226328607
 Animator:
   serializedVersion: 3
@@ -330,7 +443,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+<<<<<<< HEAD
 --- !u!70 &8306946049698257679
+=======
+--- !u!70 &1105425760081135479
+>>>>>>> RedneckChan
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,11 +457,19 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+<<<<<<< HEAD
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.06, y: -0.84}
   m_Size: {x: 1.5, y: 1.5}
+=======
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2.5}
+>>>>>>> RedneckChan
   m_Direction: 0
 --- !u!1 &7204787794280415986
 GameObject:
@@ -356,7 +481,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5884159508995511586}
   - component: {fileID: 6080649233536388111}
-  m_Layer: 0
+  - component: {fileID: 7308978320002638733}
+  m_Layer: 3
   m_Name: PlayerDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +518,35 @@ MonoBehaviour:
   rayLenght: 1
   playerDetect: {fileID: 5884159508995511586}
   target: {fileID: 0}
-  enemy: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &7308978320002638733
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7204787794280415986}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.062695354, y: 5.78737}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.10798596, y: 9.670966}
+  m_EdgeRadius: 0
 --- !u!1001 &1586526199243640061
 PrefabInstance:
   m_ObjectHideFlags: 0

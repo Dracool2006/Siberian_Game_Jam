@@ -14,8 +14,13 @@ TagManager:
   - World
   - Water
   - UI
+<<<<<<< HEAD
   - Spawn
   - 
+=======
+  - Pickup
+  - Player
+>>>>>>> RedneckChan
   - 
   - 
   - 
