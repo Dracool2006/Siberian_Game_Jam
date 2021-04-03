@@ -37,7 +37,7 @@ public class PlayerActions : MonoBehaviour
     void Attack()
     {
         if(equippedweapon){
-            //Debug.Log("Attack");
+            Debug.Log("Attack");
             equippedweapon.GetComponent<Gun>().Shoot();
         }
     }

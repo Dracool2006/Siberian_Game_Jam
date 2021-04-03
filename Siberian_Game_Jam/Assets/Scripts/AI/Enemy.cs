@@ -21,19 +21,27 @@ public class Enemy : PawnBase
 
     public Rgidbody2D rb;
 
-    public GameObject PrefabSoul;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
       target = GameObject.FindWithTag("Player").transform;
+<<<<<<< HEAD
       //state = States.lookingfor;
+=======
+      state = States.lookingfor;
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       rb = GetComponent<Rigidbody2D> ();
       bodySprite = transform.Find("Body").transform;
       anim = GetComponent <Animator> ();
       //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
       target = GameObject.FindWithTag("Player").transform;
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 91797b0 (Добавлены спавны)
     }
 
 
@@ -66,41 +74,29 @@ public class Enemy : PawnBase
 
     public override void Movement(Vector2 direction, float speed)
     {
-        if (rb)
-        {
-            rb.AddForce(direction * speed * Time.fixedDeltaTime);
-        }
+      rb.AddForce(direction * speed * Time.fixedDeltaTime);
     }
 
     // метод изменения количества HP
     public override void ChangeHP(int deltaHP)
     {
-        SetCurrentHP(GetCurrentHP() + deltaHP);
-        //Debug.Log(GetCurrentHP());
+      SetCurrentHP(GetCurrentHP() + deltaHP);
+      Debug.Log(GetCurrentHP());
 
-        if(GetCurrentHP() <= 0 && gameObject.GetComponent<Collider2D>().enabled == true)
-        {
+      if(GetCurrentHP() <= 0 ){
         //Debug.Log("Death");
-            Death();
-        }
+        Death();
+      }
     }
 
     // метод смерти
     public override void Death()
     {
-        //Debug.Log("Enemy Death");
-        gameObject.GetComponent<Collider2D> ().enabled = false;
-        SetIsDead (true);
-        state = States.dead;
-        StartCoroutine(Disappear(3.0f));
-        SoulGenerate();
-        GameObject.FindWithTag("MainCamera").GetComponent<MainLogic>().EnemyDead();
-    }
-
-    void SoulGenerate()
-    {
-        GameObject soul = Instantiate(PrefabSoul);
-        soul.transform.position = transform.position;
+      //Debug.Log("Enemy Death");
+      gameObject.GetComponent<Collider2D> ().enabled = false;
+      SetIsDead (true);
+      state = States.dead;
+      StartCoroutine(Disappear(3.0f));
     }
 
     // метод, отвечающий за логику поворота врагов
@@ -119,7 +115,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
         bodySprite.localScale = new Vector3(3f,3f,3f);
-        //Debug.Log("Enemy Move right");
+        Debug.Log("Enemy Move right");
       }
       // движение влево
       else if(rb.velocity.x < -0.1f && rb.velocity.y < 0.5f && rb.velocity.y > -0.5 ){
@@ -127,7 +123,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
         bodySprite.localScale = new Vector3(-3f,3f,3f);
-        //Debug.Log("Enemy Move left");
+        Debug.Log("Enemy Move left");
       }
       // движение вверх
       else if (rb.velocity.y > 0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
@@ -135,6 +131,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", true);
         anim.SetBool("MoveRight", false);
         anim.SetBool("MoveDown", false);
+<<<<<<< HEAD
+=======
+          Debug.Log("Enemy Move up");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
       // движение вниз
       else if (rb.velocity.y < -0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
@@ -142,6 +142,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
+<<<<<<< HEAD
+=======
+          Debug.Log("Enemy Move down");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
       // движение влево вверх
       else if (rb.velocity.x < -0.5f && rb.velocity.y > 0.5f)
@@ -149,6 +153,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
+<<<<<<< HEAD
+=======
+        Debug.Log("Enemy Move left up");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
       // движение вправо вверх
       else if (rb.velocity.x > 0.5f && rb.velocity.y > 0.5f)
@@ -156,6 +164,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
+<<<<<<< HEAD
+=======
+        Debug.Log("Enemy Move right up");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
       // движение влево вниз
       else if (rb.velocity.x < -0.5f && rb.velocity.y < -0.5f)
@@ -163,6 +175,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
+<<<<<<< HEAD
+=======
+        Debug.Log("Enemy Move left down");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
       // движение вправо вниз
       else if (rb.velocity.x > 0.5f && rb.velocity.y < -0.5f)
@@ -170,6 +186,10 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
+<<<<<<< HEAD
+=======
+        Debug.Log("Enemy Move right down");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
       }
     }
 
@@ -202,8 +222,13 @@ public class Enemy : PawnBase
         {
           other.gameObject.GetComponent<Player> ().ChangeHP(damage);
           StartCoroutine(AttackCooldown(attackCooldownTime));
+<<<<<<< HEAD
         }
     }
+=======
+        }*/
+      }
+>>>>>>> parent of 91797b0 (Добавлены спавны)
 
     // кулдаун атаки
     public IEnumerator AttackCooldown(float waitTime)

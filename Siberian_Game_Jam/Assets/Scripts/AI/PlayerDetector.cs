@@ -44,6 +44,7 @@ public class PlayerDetector : MonoBehaviour
       RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
 
       if(PlayerInfo.collider != null){
+<<<<<<< HEAD
         //Debug.Log(PlayerInfo.collider.gameObject.tag);
 =======
       RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght, layerMask);
@@ -59,6 +60,9 @@ public class PlayerDetector : MonoBehaviour
 
         Debug.DrawRay(playerDetect.position, lookDirection * rayLenght, Color.red);
 >>>>>>> RedneckChan
+=======
+        Debug.Log(PlayerInfo.collider.gameObject.tag);
+>>>>>>> parent of 91797b0 (Добавлены спавны)
 
         if(PlayerInfo.collider.gameObject.tag == "Player" )
         {

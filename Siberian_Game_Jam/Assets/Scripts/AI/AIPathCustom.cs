@@ -65,6 +65,7 @@ public class AIPathCustom : MonoBehaviour
     {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(enemy.state != States.dead)
             Movement();
         else
@@ -78,6 +79,12 @@ public class AIPathCustom : MonoBehaviour
       else if(enemy.state == States.dead)
         CancelInvoke("UpdatePath");
 >>>>>>> RedneckChan
+=======
+      if(enemy.state != States.dead)
+        Movement();
+      else
+        CancelInvoke("UpdatePath");
+>>>>>>> parent of 91797b0 (Добавлены спавны)
 
     }
 
