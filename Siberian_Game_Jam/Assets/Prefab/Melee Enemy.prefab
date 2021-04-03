@@ -356,6 +356,7 @@ MonoBehaviour:
   playerDetector: {fileID: 6897291434603733857}
   anim: {fileID: 3808982402644098656}
   otherEnemyDetector: {fileID: 6912236356795250512}
+  PrefabSoul: {fileID: 2825837462086466450, guid: 6e9929f5dd0f58549beecda159c1d331, type: 3}
 --- !u!114 &6721302636804602609
 MonoBehaviour:
   m_ObjectHideFlags: 0
