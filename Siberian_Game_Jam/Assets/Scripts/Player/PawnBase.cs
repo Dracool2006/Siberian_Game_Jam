@@ -10,11 +10,13 @@ public class PawnBase : MonoBehaviour
     public float maxSpeed;
     private int currentHP = 100;
     private bool isDead = false;
+    private int Soul = 0;
+    public int LimitSoul = 100;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHP = MaxHP;
     }
 
     // Update is called once per frame
@@ -58,6 +60,34 @@ public class PawnBase : MonoBehaviour
     public bool GetIsDead()
     {
         return isDead;
+    }
+
+    public int GetSoul()
+    {
+        return Soul;
+    }
+
+    public void SetSouls(int soul)
+    {
+        Soul = soul;
+    }
+
+    public bool AddSoul()
+    {
+        if(Soul < LimitSoul)
+        {
+            Soul++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool NotLimitSoul()
+    {
+        return (Soul < LimitSoul);
     }
 
 }

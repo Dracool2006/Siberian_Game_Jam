@@ -22,15 +22,15 @@ public class PlayerDetector : MonoBehaviour
     }
 
     void DetectPlayer() {
-      Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - new Vector2(transform.position.x, transform.position.y);
+        Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - new Vector2(transform.position.x, transform.position.y);
 
-      RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
+        RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
 
-      Debug.Log(PlayerInfo.collider.gameObject.tag);
+        Debug.Log(PlayerInfo.collider.gameObject.tag);
 
-      if(PlayerInfo.collider.gameObject.tag == "Player" )
-      {
-          Debug.Log("PlayerFound");
-      }
+        if(PlayerInfo.collider.gameObject.tag == "Player" )
+        {
+            Debug.Log("PlayerFound");
+        }
     }
 }

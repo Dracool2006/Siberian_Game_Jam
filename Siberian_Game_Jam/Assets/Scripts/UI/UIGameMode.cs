@@ -11,7 +11,7 @@ public class UIGameMode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject textInfo = GameObject.FindWithTag("TextInformation");
+        //GameObject textInfo = GameObject.FindWithTag("TextInformation");
     }
 
     // Update is called once per frame
@@ -22,6 +22,6 @@ public class UIGameMode : MonoBehaviour
 
     public void setTextInfo(string msg)
     {
-        textInfo.GetComponent<Text>().text = msg;
+        //textInfo.GetComponent<Text>().text = msg;
     }
 }
