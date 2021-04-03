@@ -13,11 +13,12 @@ public class Enemy : PawnBase
     public EnemyTypes enemyType;
     public PlayerDetector playerDetector;
     public Animator anim;
+    public OtherEnemyDetector otherEnemyDetector;
 
     private Transform target;
     private Transform bodySprite;
     protected bool isAttackCooldown = false;
-     Rigidbody2D rb;
+    Rigidbody2D rb;
 
     public GameObject PrefabSoul;
 
@@ -38,10 +39,11 @@ public class Enemy : PawnBase
     // Update is called once per frame
     public virtual void Update()
     {
-      // проверяем, что ИИ не мертв
-      if(state != States.dead)
-      {
 
+      transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
+      // проверяем, что ИИ не мертв
+      if(state != States.dead && state != States.passive)
+      {
         Rotation ();
         rangedWeaponRotation();
 
@@ -49,10 +51,14 @@ public class Enemy : PawnBase
       //  Debug.Log($" player is found {playerDetector.GetPlayerisFound()}");
 
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
-        if(!isAttackCooldown && playerDetector.GetPlayerisFound())
+        if(!isAttackCooldown && playerDetector.GetCanWeShoot())
         {
-          //Debug.Log($" player is found {playerDetector.GetPlayerisFound()}");
+          Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
           AttackStart();
+        }
+        else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())
+        {
+          AttackEnd();
         }
       }
     }
@@ -128,7 +134,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", true);
         anim.SetBool("MoveRight", false);
         anim.SetBool("MoveDown", false);
-          //Debug.Log("Enemy Move up");
+        //  Debug.Log("Enemy Move up");
       }
       // движение вниз
       else if (rb.velocity.y < -0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
@@ -136,7 +142,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
-          //Debug.Log("Enemy Move down");
+        //  Debug.Log("Enemy Move down");
       }
       // движение влево вверх
       else if (rb.velocity.x < -0.5f && rb.velocity.y > 0.5f)
@@ -144,7 +150,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
-        //Debug.Log("Enemy Move left up");
+      //  Debug.Log("Enemy Move left up");
       }
       // движение вправо вверх
       else if (rb.velocity.x > 0.5f && rb.velocity.y > 0.5f)
@@ -152,7 +158,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
-        //Debug.Log("Enemy Move right up");
+      //  Debug.Log("Enemy Move right up");
       }
       // движение влево вниз
       else if (rb.velocity.x < -0.5f && rb.velocity.y < -0.5f)
@@ -160,7 +166,7 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
-        //Debug.Log("Enemy Move left down");
+      //  Debug.Log("Enemy Move left down");
       }
       // движение вправо вниз
       else if (rb.velocity.x > 0.5f && rb.velocity.y < -0.5f)
@@ -168,16 +174,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
-        //Debug.Log("Enemy Move right down");
+      //  Debug.Log("Enemy Move right down");
       }
     }
 
 
     public virtual void AttackStart(){
 
-      /*  state = States.attackig;
-        anim.SetTrigger("Attack");
-        StartCoroutine(AttackCooldown(attackCooldownTime));*/
     }
 
     public virtual void AttackEnd(){
@@ -199,30 +202,14 @@ public class Enemy : PawnBase
 
     void OnCollisionEnter2D(Collision2D other)
     {
-          /*if(other.gameObject.tag == "Player")
 
-          if (other.gameObject.GetComponent<Player> () != null && !isAttackCooldown)
-          {
-            other.gameObject.GetComponent<Player> ().ChangeHP(damage);
-            StartCoroutine(AttackCooldown(attackCooldownTime));
-          }*/
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-    /*  if(other.gameObject.tag == "Player")
 
-        if (other.gameObject.GetComponent<Player> () != null && !isAttackCooldown)
-        {
-          other.gameObject.GetComponent<Player> ().ChangeHP(damage);
-          StartCoroutine(AttackCooldown(attackCooldownTime));
-        }*/
     }
 
-/*
-    void Animation(){
-      anim.SetTrigger("Attack");
-    }*/
     // кулдаун атаки
     public IEnumerator AttackCooldown(float waitTime)
     {
