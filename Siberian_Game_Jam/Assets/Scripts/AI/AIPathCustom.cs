@@ -24,6 +24,7 @@ public class AIPathCustom : MonoBehaviour
 
   public Transform target;
   public Enemy enemy;
+  public PawnBase pawn;
   //public float movementSpeed = 10.0f;
   public float nextWaypointOfDistance = 1f;
   public float minDistanceToPlayer = 2f;
@@ -41,6 +42,7 @@ public class AIPathCustom : MonoBehaviour
       // подключаем необходимые компоненты
         seeker = GetComponent<Seeker>();
         enemy = GetComponent<Enemy>();
+        pawn = GetComponent<PawnBase>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
       // запускаем поиск пути
@@ -64,7 +66,6 @@ public class AIPathCustom : MonoBehaviour
         Movement();
       else
         CancelInvoke("UpdatePath");
-
 
     }
 
@@ -118,8 +119,9 @@ public class AIPathCustom : MonoBehaviour
         Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized;
 
         //вызов функции движения из Enemy
-          if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer){
-              enemy.Movement(direction, enemy.maxSpeed);
+        if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer){
+            //Debug.Log(enemy);
+            enemy.Movement(direction, enemy.maxSpeed);
           }
         }
         // проверка дистанции до следующей точки

@@ -7,18 +7,22 @@ public class PlayerDetector : MonoBehaviour
   public float rayLenght = 1.0f;
   public Transform playerDetect;
   public Transform target;
+  public Enemy enemy;
+  bool playerisFound;
 
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
+        enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
         DetectPlayer();
+
     }
 
     void DetectPlayer() {
@@ -26,11 +30,25 @@ public class PlayerDetector : MonoBehaviour
 
       RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
 
-      Debug.Log(PlayerInfo.collider.gameObject.tag);
+      if(PlayerInfo.collider != null){
+        Debug.Log(PlayerInfo.collider.gameObject.tag);
 
-      if(PlayerInfo.collider.gameObject.tag == "Player" )
-      {
-          Debug.Log("PlayerFound");
-      }
+        if(PlayerInfo.collider.gameObject.tag == "Player" )
+        {
+            playerisFound = true;
+        }
+        else
+            playerisFound = false;
+        }
+      else
+        playerisFound = false;
     }
+
+
+    public bool GetPlayerisFound()
+    {
+      return playerisFound;
+    }
+
+
 }
