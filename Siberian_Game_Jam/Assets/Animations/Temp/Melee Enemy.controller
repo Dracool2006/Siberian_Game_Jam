@@ -190,16 +190,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5093761311774465077}
   m_Solo: 0
@@ -376,16 +367,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4103287133725852822}
   m_Solo: 0
@@ -407,16 +389,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5093761311774465077}
   m_Solo: 0
@@ -438,16 +411,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7509701958189144065}
   m_Solo: 0
@@ -469,16 +433,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4103287133725852822}
   m_Solo: 0
@@ -500,16 +455,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4103287133725852822}
   m_Solo: 0
@@ -549,7 +495,8 @@ AnimatorStateMachine:
     m_State: {fileID: 5093761311774465077}
     m_Position: {x: 410, y: 270, z: 0}
   m_ChildStateMachines: []
-  m_AnyStateTransitions: []
+  m_AnyStateTransitions:
+  - {fileID: -5839879823685077780}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -625,16 +572,7 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: MoveUp
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveRight
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: MoveDown
-    m_EventTreshold: 0
+  m_Conditions: []
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9081876912202909396}
   m_Solo: 0

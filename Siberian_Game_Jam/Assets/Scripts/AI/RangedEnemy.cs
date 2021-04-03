@@ -19,7 +19,7 @@ public class RangedEnemy : Enemy
 
     public override void AttackStart(){
         //anim.SetBool("Attack", true);
-      //  Debug.Log("EnemyAttack");
+        Debug.Log("EnemyAttack");
         state = States.attackig;
         EquippedWeapon.GetComponent<Gun>().Shoot();
         //StartCoroutine(AttackCooldown(attackCooldownTime));

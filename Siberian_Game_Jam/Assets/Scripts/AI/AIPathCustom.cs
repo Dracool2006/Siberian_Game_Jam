@@ -23,21 +23,16 @@ public class AIPathCustom : MonoBehaviour
   */
 
   public Transform target;
-  public Transform otherEnemyInfoSocket;
-  public Transform otherEnemyInfo;
   public Enemy enemy;
   public PawnBase pawn;
-  public float rayLenght = 1f;
   //public float movementSpeed = 10.0f;
   public float nextWaypointOfDistance = 1f;
   public float minDistanceToPlayer = 2f;
 
-
-  private bool thereIsOtherAgentOnThePath = false;
-  private Path path;
-  private Seeker seeker;
-  private int currentWaypoint = 0;
-  private bool reachedEndOfPath = false;
+  Path path;
+  Seeker seeker;
+  int currentWaypoint = 0;
+  bool reachedEndOfPath = false;
 
   Rigidbody2D rb;
 
@@ -53,7 +48,10 @@ public class AIPathCustom : MonoBehaviour
       // запускаем поиск пути
         InvokeRepeating("UpdatePath", 0f, 0.5f);
 
+
+
     }
+
 
     // Update is called once per frame
     void Update()
@@ -66,6 +64,7 @@ public class AIPathCustom : MonoBehaviour
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(enemy.state != States.dead)
             Movement();
         else
@@ -73,10 +72,11 @@ public class AIPathCustom : MonoBehaviour
 =======
       if(enemy.state != States.dead && enemy.state != States.passive){
         EnemyInfoSocketRotation();
+=======
+      if(enemy.state != States.dead)
+>>>>>>> parent of f77f99e (Some AI fixes)
         Movement();
-
-      }
-      else if(enemy.state == States.dead)
+      else
         CancelInvoke("UpdatePath");
 >>>>>>> RedneckChan
 =======
@@ -88,17 +88,6 @@ public class AIPathCustom : MonoBehaviour
 
     }
 
-
-    void EnemyInfoSocketRotation()  // вращение колизии для отслеживания моба перд AI
-    {
-      if(path != null){
-
-        Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position);
-        float angle = Mathf.Atan2(direction.y,direction.x) * Mathf.Rad2Deg;
-        otherEnemyInfoSocket.eulerAngles = new Vector3(0,0, angle);
-        //Debug.Log($" lookat {WeaponSokect.rotation}");
-      }
-    }
 
     void UpdatePath()
     {
@@ -148,16 +137,12 @@ public class AIPathCustom : MonoBehaviour
         // вычисление направления пути
         Vector2 direction = ((Vector2) path.vectorPath[currentWaypoint] - rb.position).normalized;
 
-      //  RaycastHit2D otherAgentInfo = Physics2D.Raycast(otherEnemyInfo.position, direction, rayLenght);
-
         //вызов функции движения из Enemy
-        // Если находисмся в состоянии поиска и нет препятствия перед АИ, то движемся
-        if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer && enemy.state == States.lookingfor && enemy.otherEnemyDetector.GetCanWeMove()){
+        if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer){
             //Debug.Log(enemy);
             enemy.Movement(direction, enemy.maxSpeed);
           }
         }
-
         // проверка дистанции до следующей точки
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
@@ -166,15 +151,5 @@ public class AIPathCustom : MonoBehaviour
           currentWaypoint++;
         }
     }
-
-
-      /*
-      Vector2[] GetRotationMatrix(float degree){
-
-      Vector2[] rotMatrix = new Vector2[2] {new Vector2(Mathf.Cos(Mathf.Deg2Rad*degree),Mathf.Sin(Mathf.Deg2Rad*degree)), new Vector2(-1 * Mathf.Sin(Mathf.Deg2Rad*degree),Mathf.Cos(Mathf.Deg2Rad*degree))};
-
-      return rotMatrix;
-    }*/
-
 
 }

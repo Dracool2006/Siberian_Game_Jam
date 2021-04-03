@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-  - Enemy
-  - Pickup
->>>>>>> parent of 91797b0 (Добавлены спавны)
   layers:
   - Default
   - TransparentFX
@@ -17,11 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< HEAD
   - 
-=======
-  - Pickup
->>>>>>> parent of 91797b0 (Добавлены спавны)
   - 
   - 
   - 

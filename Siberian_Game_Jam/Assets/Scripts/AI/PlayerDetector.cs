@@ -7,37 +7,22 @@ public class PlayerDetector : MonoBehaviour
   public float rayLenght = 1.0f;
   public Transform playerDetect;
   public Transform target;
-  bool playerisFound;
-  bool thereIsEnemyOnTheWay;
-  bool canWeShoot;
-  public LayerMask layerMask;
 
 
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
-        playerisFound = false;
-        thereIsEnemyOnTheWay = false;
-        canWeShoot = false;
-
     }
 
     // Update is called once per frame
     void Update()
     {
         DetectPlayer();
-
-        if(playerisFound && !thereIsEnemyOnTheWay)
-        {
-          canWeShoot = true;
-        }
-        else
-          canWeShoot = false;
     }
 
-    // временно не используется
     void DetectPlayer() {
+<<<<<<< HEAD
       Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - new Vector2(transform.position.x, transform.position.y);
 
 <<<<<<< HEAD
@@ -50,12 +35,13 @@ public class PlayerDetector : MonoBehaviour
       RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght, layerMask);
 
     /*Debug.DrawRay(playerDetect.position, lookDirection * rayLenght, Color.red);
+=======
+        Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - new Vector2(transform.position.x, transform.position.y);
+>>>>>>> parent of f77f99e (Some AI fixes)
 
-      Debug.Log(playerisFound);*/
-    /*  if(PlayerInfo.collider == null){
-      //    Debug.Log("Player info null");
-        }*/
+        RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
 
+<<<<<<< HEAD
       /*if(PlayerInfo.collider != null){
 
         Debug.DrawRay(playerDetect.position, lookDirection * rayLenght, Color.red);
@@ -63,18 +49,16 @@ public class PlayerDetector : MonoBehaviour
 =======
         Debug.Log(PlayerInfo.collider.gameObject.tag);
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+        Debug.Log(PlayerInfo.collider.gameObject.tag);
+>>>>>>> parent of f77f99e (Some AI fixes)
 
         if(PlayerInfo.collider.gameObject.tag == "Player" )
         {
-            playerisFound = true;
+            Debug.Log("PlayerFound");
         }
-        else
-            playerisFound = false;
-        }
-      else
-        playerisFound = false;
-        */
     }
+<<<<<<< HEAD
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -108,4 +92,6 @@ public class PlayerDetector : MonoBehaviour
     }
 
 
+=======
+>>>>>>> parent of f77f99e (Some AI fixes)
 }

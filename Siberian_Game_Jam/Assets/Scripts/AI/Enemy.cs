@@ -13,13 +13,16 @@ public class Enemy : PawnBase
     public EnemyTypes enemyType;
     public PlayerDetector playerDetector;
     public Animator anim;
-    public OtherEnemyDetector otherEnemyDetector;
 
     private Transform target;
     private Transform bodySprite;
     protected bool isAttackCooldown = false;
+<<<<<<< HEAD
 
     public Rgidbody2D rb;
+=======
+     Rigidbody2D rb;
+>>>>>>> parent of f77f99e (Some AI fixes)
 
 
 
@@ -29,10 +32,14 @@ public class Enemy : PawnBase
     {
       target = GameObject.FindWithTag("Player").transform;
 <<<<<<< HEAD
+<<<<<<< HEAD
       //state = States.lookingfor;
 =======
       state = States.lookingfor;
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+      state = States.lookingfor;
+>>>>>>> parent of f77f99e (Some AI fixes)
       rb = GetComponent<Rigidbody2D> ();
       bodySprite = transform.Find("Body").transform;
       anim = GetComponent <Animator> ();
@@ -48,11 +55,10 @@ public class Enemy : PawnBase
     // Update is called once per frame
     public virtual void Update()
     {
-
-      transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
       // проверяем, что ИИ не мертв
-      if(state != States.dead && state != States.passive)
+      if(state != States.dead)
       {
+
         Rotation ();
         rangedWeaponRotation();
 
@@ -60,14 +66,10 @@ public class Enemy : PawnBase
       //  Debug.Log($" player is found {playerDetector.GetPlayerisFound()}");
 
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
-        if(!isAttackCooldown && playerDetector.GetCanWeShoot())
+        if(!isAttackCooldown && playerDetector.GetPlayerisFound())
         {
-          Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
+          //Debug.Log($" player is found {playerDetector.GetPlayerisFound()}");
           AttackStart();
-        }
-        else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())
-        {
-          AttackEnd();
         }
       }
     }
@@ -132,9 +134,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", false);
         anim.SetBool("MoveDown", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           Debug.Log("Enemy Move up");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+          Debug.Log("Enemy Move up");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
       // движение вниз
       else if (rb.velocity.y < -0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
@@ -143,9 +149,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           Debug.Log("Enemy Move down");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+          Debug.Log("Enemy Move down");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
       // движение влево вверх
       else if (rb.velocity.x < -0.5f && rb.velocity.y > 0.5f)
@@ -154,9 +164,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Debug.Log("Enemy Move left up");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+        Debug.Log("Enemy Move left up");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
       // движение вправо вверх
       else if (rb.velocity.x > 0.5f && rb.velocity.y > 0.5f)
@@ -165,9 +179,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Debug.Log("Enemy Move right up");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+        Debug.Log("Enemy Move right up");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
       // движение влево вниз
       else if (rb.velocity.x < -0.5f && rb.velocity.y < -0.5f)
@@ -176,9 +194,13 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Debug.Log("Enemy Move left down");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+        Debug.Log("Enemy Move left down");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
       // движение вправо вниз
       else if (rb.velocity.x > 0.5f && rb.velocity.y < -0.5f)
@@ -187,15 +209,22 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         Debug.Log("Enemy Move right down");
 >>>>>>> parent of 91797b0 (Добавлены спавны)
+=======
+        Debug.Log("Enemy Move right down");
+>>>>>>> parent of f77f99e (Some AI fixes)
       }
     }
 
 
     public virtual void AttackStart(){
 
+      /*  state = States.attackig;
+        anim.SetTrigger("Attack");
+        StartCoroutine(AttackCooldown(attackCooldownTime));*/
     }
 
     public virtual void AttackEnd(){
@@ -215,21 +244,43 @@ public class Enemy : PawnBase
       }
     }
 
+<<<<<<< HEAD
+=======
+    void OnCollisionEnter2D(Collision2D other)
+    {
+          /*if(other.gameObject.tag == "Player")
+
+          if (other.gameObject.GetComponent<Player> () != null && !isAttackCooldown)
+          {
+            other.gameObject.GetComponent<Player> ().ChangeHP(damage);
+            StartCoroutine(AttackCooldown(attackCooldownTime));
+          }*/
+    }
+
+>>>>>>> parent of f77f99e (Some AI fixes)
     void OnTriggerEnter2D(Collider2D other)
     {
+    /*  if(other.gameObject.tag == "Player")
 
         if (other.gameObject.GetComponent<Player> () != null && !isAttackCooldown)
         {
           other.gameObject.GetComponent<Player> ().ChangeHP(damage);
           StartCoroutine(AttackCooldown(attackCooldownTime));
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
     }
 =======
+=======
+>>>>>>> parent of f77f99e (Some AI fixes)
         }*/
       }
 >>>>>>> parent of 91797b0 (Добавлены спавны)
 
+/*
+    void Animation(){
+      anim.SetTrigger("Attack");
+    }*/
     // кулдаун атаки
     public IEnumerator AttackCooldown(float waitTime)
     {
