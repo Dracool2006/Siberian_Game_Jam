@@ -62,10 +62,10 @@ public class AIPathCustom : MonoBehaviour
     void FixedUpdate ()
     {
 
-      if(enemy.state != States.dead)
-        Movement();
-      else
-        CancelInvoke("UpdatePath");
+        if(enemy.state != States.dead)
+            Movement();
+        else
+            CancelInvoke("UpdatePath");
 
     }
 

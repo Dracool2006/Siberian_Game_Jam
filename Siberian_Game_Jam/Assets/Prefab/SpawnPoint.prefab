@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ba1d51eafacdf41a226ae39c079537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeEnemy: {fileID: 0}
-  rangedEnemy: {fileID: 0}
+  meleeEnemy: {fileID: 4720250957650471961, guid: ea2591464bd8a854f88a5c7b1e36c864, type: 3}
+  rangedEnemy: {fileID: 5609270985056401516, guid: 04d422b2df74191498735885ea833af7, type: 3}
   spawnFreq: 5
   spawnType: 0
 --- !u!58 &4350642815027756641

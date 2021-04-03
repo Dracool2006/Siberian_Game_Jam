@@ -31,7 +31,7 @@ public class PlayerDetector : MonoBehaviour
       RaycastHit2D PlayerInfo = Physics2D.Raycast(playerDetect.position, lookDirection, rayLenght);
 
       if(PlayerInfo.collider != null){
-        Debug.Log(PlayerInfo.collider.gameObject.tag);
+        //Debug.Log(PlayerInfo.collider.gameObject.tag);
 
         if(PlayerInfo.collider.gameObject.tag == "Player" )
         {
