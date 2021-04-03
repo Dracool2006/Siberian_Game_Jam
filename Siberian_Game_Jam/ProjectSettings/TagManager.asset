@@ -3,24 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Pickup
-  - Spawn
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - World
+  - 
   - Water
   - UI
-<<<<<<< HEAD
-  - Spawn
   - 
-=======
-  - Pickup
-  - Player
->>>>>>> RedneckChan
+  - 
   - 
   - 
   - 

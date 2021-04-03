@@ -18,28 +18,15 @@ public class Enemy : PawnBase
     private Transform target;
     private Transform bodySprite;
     protected bool isAttackCooldown = false;
-<<<<<<< HEAD
-     Rigidbody2D rb;
+
+    public Rgidbody2D rb;
 
     public GameObject PrefabSoul;
-=======
-    Rigidbody2D rb;
-
->>>>>>> RedneckChan
 
 
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        target = GameObject.FindWithTag("Player").transform;
-        state = (state != States.passive) ? States.lookingfor : States.passive;
-        rb = GetComponent<Rigidbody2D> ();
-        bodySprite = transform.Find("Body").transform;
-        anim = GetComponent <Animator> ();
-        //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
-        target = GameObject.FindWithTag("Player").transform;
-=======
       target = GameObject.FindWithTag("Player").transform;
       //state = States.lookingfor;
       rb = GetComponent<Rigidbody2D> ();
@@ -47,8 +34,6 @@ public class Enemy : PawnBase
       anim = GetComponent <Animator> ();
       //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
       target = GameObject.FindWithTag("Player").transform;
-
->>>>>>> RedneckChan
     }
 
 
@@ -150,11 +135,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveUp", true);
         anim.SetBool("MoveRight", false);
         anim.SetBool("MoveDown", false);
-<<<<<<< HEAD
-          //Debug.Log("Enemy Move up");
-=======
-        //  Debug.Log("Enemy Move up");
->>>>>>> RedneckChan
       }
       // движение вниз
       else if (rb.velocity.y < -0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
@@ -162,11 +142,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveDown", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveRight", false);
-<<<<<<< HEAD
-          //Debug.Log("Enemy Move down");
-=======
-        //  Debug.Log("Enemy Move down");
->>>>>>> RedneckChan
       }
       // движение влево вверх
       else if (rb.velocity.x < -0.5f && rb.velocity.y > 0.5f)
@@ -174,11 +149,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
-<<<<<<< HEAD
-        //Debug.Log("Enemy Move left up");
-=======
-      //  Debug.Log("Enemy Move left up");
->>>>>>> RedneckChan
       }
       // движение вправо вверх
       else if (rb.velocity.x > 0.5f && rb.velocity.y > 0.5f)
@@ -186,11 +156,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
-<<<<<<< HEAD
-        //Debug.Log("Enemy Move right up");
-=======
-      //  Debug.Log("Enemy Move right up");
->>>>>>> RedneckChan
       }
       // движение влево вниз
       else if (rb.velocity.x < -0.5f && rb.velocity.y < -0.5f)
@@ -198,11 +163,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveUp", false);
         anim.SetBool("MoveDown", false);
-<<<<<<< HEAD
-        //Debug.Log("Enemy Move left down");
-=======
-      //  Debug.Log("Enemy Move left down");
->>>>>>> RedneckChan
       }
       // движение вправо вниз
       else if (rb.velocity.x > 0.5f && rb.velocity.y < -0.5f)
@@ -210,11 +170,6 @@ public class Enemy : PawnBase
         anim.SetBool("MoveRight", true);
         anim.SetBool("MoveDown", false);
         anim.SetBool("MoveDown", false);
-<<<<<<< HEAD
-        //Debug.Log("Enemy Move right down");
-=======
-      //  Debug.Log("Enemy Move right down");
->>>>>>> RedneckChan
       }
     }
 
@@ -240,24 +195,15 @@ public class Enemy : PawnBase
       }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
 
-<<<<<<< HEAD
         if (other.gameObject.GetComponent<Player> () != null && !isAttackCooldown)
         {
           other.gameObject.GetComponent<Player> ().ChangeHP(damage);
           StartCoroutine(AttackCooldown(attackCooldownTime));
-        }*/
+        }
     }
-=======
-      }
->>>>>>> RedneckChan
 
     // кулдаун атаки
     public IEnumerator AttackCooldown(float waitTime)
