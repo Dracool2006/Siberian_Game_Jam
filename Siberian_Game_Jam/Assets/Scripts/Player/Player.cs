@@ -5,11 +5,11 @@ using UnityEngine;
 public class Player : PawnBase
 {
 
-  public Camera cam;
-  //private variables
-  private Rigidbody2D rb;
-  private Vector2 mousePos;
-  public Transform WeaponSoket;
+    public Camera cam;
+    //private variables
+    private Rigidbody2D rb;
+    private Vector2 mousePos;
+    public Transform WeaponSoket;
 
 
     // Start is called before the first frame update
@@ -53,5 +53,17 @@ public class Player : PawnBase
         }
     }
 
-
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Pickup")
+        {
+            if (col.gameObject.GetComponent<Soul>().NamePickup == "Soul")
+            {
+                if (AddSoul())
+                {
+                    Destroy(col.gameObject);
+                }
+            }
+        }
+    }
 }

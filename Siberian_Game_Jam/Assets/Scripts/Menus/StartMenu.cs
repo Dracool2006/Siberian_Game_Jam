@@ -1,22 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
-
     public GameObject PanelCredits;
     public GameObject PanelOptions;
-
-    public GameObject ScrollBarSound;
-    public GameObject ScrollBarMusic;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -24,6 +18,7 @@ public class StartMenu : MonoBehaviour
     {
         
     }
+
     public void OnGame()
     {
         StartCoroutine(LoadYourAsyncScene());
@@ -31,8 +26,6 @@ public class StartMenu : MonoBehaviour
 
     IEnumerator LoadYourAsyncScene()
     {
-        GlobalList.SaundValue = ScrollBarSound.GetComponent<Scrollbar>().value;
-        GlobalList.MusicValue = ScrollBarMusic.GetComponent<Scrollbar>().value;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("GameMode");
 
         // Wait until the asynchronous scene fully loads
@@ -69,6 +62,4 @@ public class StartMenu : MonoBehaviour
     {
         PanelOptions.SetActive(false);
     }
-
-
 }
