@@ -20,7 +20,7 @@ public class PuppeteerEnemys : MonoBehaviour
         ProgressSpawn[2] = new int[5];
         ProgressSpawn[3] = new int[5];
         ProgressSpawn[0][0] = 0;
-        ProgressSpawn[0][1] = 25;
+        ProgressSpawn[0][1] = 50;
         ProgressSpawn[0][2] = 90;
         ProgressSpawn[0][3] = 10;
         ProgressSpawn[0][4] = 10;

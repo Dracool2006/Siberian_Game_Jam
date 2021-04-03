@@ -11,11 +11,14 @@ public class Player : PawnBase
     private Vector2 mousePos;
     public Transform WeaponSoket;
 
+    public GameObject UI;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        RescaleHealPoint();
+        RescaleSoul();
     }
 
     // Update is called once per frame
@@ -41,6 +44,16 @@ public class Player : PawnBase
 
     }
 
+    void RescaleHealPoint()
+    {
+        UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
+    }
+
+    void RescaleSoul()
+    {
+        UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
+    }
+
     void Rotation()
     {
 
@@ -62,6 +75,7 @@ public class Player : PawnBase
                 if (AddSoul())
                 {
                     Destroy(col.gameObject);
+                    RescaleSoul();
                 }
             }
         }

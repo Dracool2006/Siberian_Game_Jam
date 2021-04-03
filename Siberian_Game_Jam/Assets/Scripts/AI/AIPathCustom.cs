@@ -64,14 +64,13 @@ public class AIPathCustom : MonoBehaviour
     void FixedUpdate ()
     {
 
-      if(enemy.state != States.dead && enemy.state != States.passive){
-        EnemyInfoSocketRotation();
-        Movement();
-
-      }
-      else if(enemy.state == States.dead)
-        CancelInvoke("UpdatePath");
-
+        if(enemy.state != States.dead && enemy.state != States.passive){
+            EnemyInfoSocketRotation();
+            Movement();
+        }
+        else if(enemy.state == States.dead)
+            CancelInvoke("UpdatePath");
+        
     }
 
 
@@ -89,8 +88,11 @@ public class AIPathCustom : MonoBehaviour
     void UpdatePath()
     {
 
-      /* Ищем цель */
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
+        /* Ищем цель */
+        if (rb) 
+        {
+            seeker.StartPath(rb.position, target.position, OnPathComplete);
+        }
 
     }
 

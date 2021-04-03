@@ -9,6 +9,7 @@ public class PuppeteerSpawn : MonoBehaviour
     public GameObject AllEnemys;
     private float SpawnTimer = 10;
     private int ProgressLevel = 0;
+    public float DeltaRespawn = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,7 @@ public class PuppeteerSpawn : MonoBehaviour
         }
         else
         {
-            SpawnTimer = 1;
+            SpawnTimer = DeltaRespawn;
             int spawnNumber = Mathf.FloorToInt(UnityEngine.Random.Range(0, AllSpawn.Count));
             AllEnemys.GetComponent<PuppeteerEnemys>().SpawnEnemy(ProgressLevel, AllSpawn[spawnNumber].position);
         }

@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class UIGameMode : MonoBehaviour
 {
 
-    private GameObject textInfo;
+    public GameObject SoulScale;
+    public Text SoulText;
+    public GameObject HealPointScale;
+    public Text BulletText;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +23,19 @@ public class UIGameMode : MonoBehaviour
         
     }
 
-    public void setTextInfo(string msg)
+    public void ShowBullet(int bullet, int maxBullet)
     {
-        //textInfo.GetComponent<Text>().text = msg;
+        BulletText.text = bullet.ToString() + "/" + maxBullet.ToString();
+    }
+
+    public void ShowSoulLevel(int val)
+    {
+        SoulText.text = val.ToString();
+        SoulScale.transform.position = new Vector3(0, -val, 0);
+    }
+
+    public void ShowHealPointLevel(int val)
+    {
+        HealPointScale.transform.position = new Vector3(0, -val * 3.5f, 0);
     }
 }

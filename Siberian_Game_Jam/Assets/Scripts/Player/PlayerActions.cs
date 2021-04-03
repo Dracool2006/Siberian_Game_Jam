@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
-
-
     public GameObject equippedweapon;
-
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +39,9 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-
+    void RescaleBullet(int buller, int maxBullet)
+    {
+        GetComponent<Player>().UI.GetComponent<UIGameMode>().ShowBullet(buller, maxBullet); //временная затычка
+    }
 
 }
