@@ -7,11 +7,12 @@ public class GameMenu : MonoBehaviour
 {
 
     public GameObject PanelOptions;
+    public GameObject PanelPosthumous;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -62,6 +63,12 @@ public class GameMenu : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void ActivatePostPortus()
+    {
+        Time.timeScale = 0;
+        PanelPosthumous.SetActive(true);
     }
 
     public void OnOptions()

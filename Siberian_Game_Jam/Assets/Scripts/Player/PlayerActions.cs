@@ -17,6 +17,7 @@ public class PlayerActions : MonoBehaviour
     {
       player = GetComponent<Player>();
       ChangeWeaponMode(1);
+      RescaleBullet(equippedweapon.GetComponent<Gun>().currentBulletsInMagazine, equippedweapon.GetComponent<Gun>().MaxBulletsInMagazine);
     }
 
     // Update is called once per frame
@@ -106,6 +107,7 @@ public class PlayerActions : MonoBehaviour
         if(equippedweapon)
         {
             equippedweapon.GetComponent<Gun>().Shoot();
+            RescaleBullet(equippedweapon.GetComponent<Gun>().currentBulletsInMagazine, equippedweapon.GetComponent<Gun>().MaxBulletsInMagazine);
         }
     }
 

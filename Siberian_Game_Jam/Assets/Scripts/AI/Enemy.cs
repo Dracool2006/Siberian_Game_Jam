@@ -58,14 +58,17 @@ public class Enemy : PawnBase
 
         rangedWeaponRotation();
 
-      //  Debug.Log($" isAttackCooldown {isAttackCooldown}");
-      //  Debug.Log($" player is found {playerDetector.GetPlayerisFound()}");
-
+        Debug.Log($" isAttackCooldown {isAttackCooldown}");
+        Debug.Log($" can we shoot {playerDetector.GetCanWeShoot()}");
+        Debug.Log($" isAttackCooldown {isAttackCooldown}");
+        Debug.Log($" summt {!isAttackCooldown && playerDetector.GetCanWeShoot()}");
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
         if(!isAttackCooldown && playerDetector.GetCanWeShoot())
         {
+          Debug.Log("EnemyAttack");
           //Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
           AttackStart();
+          Debug.Log("EnemyAttack");
         }
         else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())
         {
@@ -105,7 +108,9 @@ public class Enemy : PawnBase
     {
         AudioDead.Play();
         //Debug.Log("Enemy Death");
+        enemyAnimator.SetTrigger("Death");
         gameObject.GetComponent<Collider2D> ().enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
         SetIsDead (true);
         state = States.dead;
         StartCoroutine(Disappear(3.0f));
@@ -172,7 +177,7 @@ public class Enemy : PawnBase
           transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
       }
-    
+
   /*  else
     {
       enemyAnimator.SetBool("MoveRight", false);

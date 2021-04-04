@@ -19,6 +19,10 @@ public class UIGameMode : MonoBehaviour
     public int shootGunSoulsDemand = 35;
     public int healSoulsDemand = 40;
 
+    public Slider SoulSlider;
+    public Slider HealSlider;
+
+
     // Start is called before the first frame update
     void Start()
     {

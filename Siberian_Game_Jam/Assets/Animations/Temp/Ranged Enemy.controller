@@ -474,8 +474,7 @@ AnimatorState:
   m_Name: Death
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 5483497666141506796}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -1508,22 +1507,18 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -5272640474317997424}
     m_Position: {x: 420, y: -200, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -4086034102703603121}
-    m_Position: {x: -110, y: -10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -7033396995305750473}
   - {fileID: -7220856772574959359}
-  - {fileID: -2844315494497326750}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 170, y: -50, z: 0}
-  m_EntryPosition: {x: -220, y: 110, z: 0}
+  m_EntryPosition: {x: -100, y: 100, z: 0}
   m_ExitPosition: {x: 640, y: 110, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -4086034102703603121}
+  m_DefaultState: {fileID: -3325457401837777097}
 --- !u!1102 &3900441346701568041
 AnimatorState:
   serializedVersion: 6

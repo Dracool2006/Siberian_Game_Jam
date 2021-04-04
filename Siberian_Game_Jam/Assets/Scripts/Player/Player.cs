@@ -14,6 +14,7 @@ public class Player : PawnBase
     public int healSoulsDemand = 40;
     public int healCount = 5;
     public float healTime = 10f;
+    public GameMenu gameMenu;
     //private variables
     private Rigidbody2D rb;
     private Vector2 mousePos;
@@ -31,6 +32,7 @@ public class Player : PawnBase
         rb = GetComponent<Rigidbody2D>();
         RescaleHealPoint();
         RescaleSoul();
+
     }
     #region Body
     // Update is called once per frame
@@ -61,14 +63,18 @@ public class Player : PawnBase
     }
 
     public void RescaleHealPoint()
-    {
-        UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
-    }
+   {
+      // UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
+       UI.GetComponent<UIGameMode>().SetHealSlider(GetCurrentHP());
+   }
 
-    public void RescaleSoul()
-    {
-        UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
-    }
+   public void RescaleSoul()
+   {
+      //UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
+       UI.GetComponent<UIGameMode>().SetSoulSlider(GetSoul());
+   }
+
+
 
     void Rotation(float angle)
     {
@@ -140,7 +146,7 @@ public class Player : PawnBase
 
     public override void ChangeHP(int deltaHP)
     {
-        RescaleHealPoint();
+
 
         if (deltaHP < 0)
         {
@@ -158,6 +164,7 @@ public class Player : PawnBase
     {
         gameObject.GetComponent<Collider2D> ().enabled = false;
         SetIsDead (true);
+        gameMenu.ActivatePostPortus();
 
     }
 
@@ -178,8 +185,8 @@ public class Player : PawnBase
         }
     }
 
-    void OnTriggerStay2D(Collider2D col) 
-    { 
+    void OnTriggerStay2D(Collider2D col)
+    {
         if (col.gameObject.tag == "Altar")
         {
             if(GetSoul() > 0)
