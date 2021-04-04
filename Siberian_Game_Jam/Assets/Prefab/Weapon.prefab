@@ -123,4 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageCollision: {fileID: 6233834177940374355}
-  damage: -30
+  damage: -10
