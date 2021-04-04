@@ -215,12 +215,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrel: {fileID: 5191440435623732240}
   bullet: {fileID: 7221790135438144245, guid: 75b59535ca4792846b0622b2c8b4f723, type: 3}
+  bullets: []
   reloadingTime: 2
   MaxBulletsInMagazine: 0
   currentBulletsInMagazine: 6
   isReloading: 0
   shootingSpeed: 60
   mode: 0
+  weaponMode: 0
   pistolStats: {fileID: 4669182559751897547}
   shootgunStats: {fileID: 8831644964565730951}
   machinegunStats: {fileID: 5771605453143921406}
@@ -259,6 +261,7 @@ MonoBehaviour:
   MaxBulletsInMagazine: 24
   shootingSpeed: 240
   BulletsList: []
+  machinegunTime: 30
 --- !u!114 &4669182559751897547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +294,7 @@ MonoBehaviour:
   MaxBulletsInMagazine: 12
   shootingSpeed: 39
   BulletsList: []
+  shootgunTime: 20
 --- !u!1 &5191440435623732243
 GameObject:
   m_ObjectHideFlags: 0

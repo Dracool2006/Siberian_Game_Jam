@@ -9,6 +9,11 @@ public class Player : PawnBase
     public GameObject UI;
     public Transform WeaponSoket;
     public Animator playerAnimator;
+    public int machineGunSoulsDemand = 25;
+    public int shootGunSoulsDemand = 35;
+    public int healSoulsDemand = 40;
+    public int healCount = 5;
+    public float healTime = 10f;
     //private variables
     private Rigidbody2D rb;
     private Vector2 mousePos;
@@ -53,12 +58,12 @@ public class Player : PawnBase
 
     }
 
-    void RescaleHealPoint()
+    public void RescaleHealPoint()
     {
         UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
     }
 
-    void RescaleSoul()
+    public void RescaleSoul()
     {
         UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
     }
@@ -133,7 +138,13 @@ public class Player : PawnBase
 
     public override void ChangeHP(int deltaHP)
     {
+
+        if (deltaHP <0)
+        {
+          playerAnimator.SetTrigger("Damage");
+        }
         SetCurrentHP(GetCurrentHP() + deltaHP);
+        RescaleHealPoint();
         if(GetCurrentHP() <= 0 && gameObject.GetComponent<Collider2D>().enabled == true)
         {
             Death();

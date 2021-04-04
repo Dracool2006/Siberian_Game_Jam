@@ -968,6 +968,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7221790135438144245, guid: d76c9eefd2e7b164083b079615769464, type: 3}
     - target: {fileID: 777230722983617847, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 777230722983617847, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
@@ -979,6 +983,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 863591033630550663, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 863591033630550663, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.018
+      objectReference: {fileID: 0}
     - target: {fileID: 1358442492686439385, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
       propertyPath: BulletsList.Array.size
       value: 1
@@ -987,6 +999,10 @@ PrefabInstance:
       propertyPath: BulletsList.Array.data[0]
       value: 
       objectReference: {fileID: 7221790135438144245, guid: 0b700850c1e9a6648b1e3137b25ec303, type: 3}
+    - target: {fileID: 1393753695164437990, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6362112617152499793, guid: 6d277082d2c652741863888c0310b98a, type: 3}
     - target: {fileID: 4058511715468838816, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
       propertyPath: BulletsList.Array.size
       value: 3
@@ -1017,6 +1033,14 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 463c74be0c4675a4c97fa35d11e047f6, type: 3}
     - target: {fileID: 5436447716772797154, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620591099478477411, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620591099478477411, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8527428173071774867, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
@@ -1724,6 +1748,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1613048406}
     m_Modifications:
+    - target: {fileID: 979583792226328607, guid: 04d422b2df74191498735885ea833af7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f30585688f8f27e42b1507243d889cdd, type: 2}
     - target: {fileID: 6253316117531626806, guid: 04d422b2df74191498735885ea833af7, type: 3}
       propertyPath: BulletsList.Array.size
       value: 1
@@ -5985,7 +6013,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4720250957650471961, guid: ea2591464bd8a854f88a5c7b1e36c864, type: 3}
       propertyPath: state
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6721302636804602617, guid: ea2591464bd8a854f88a5c7b1e36c864, type: 3}
       propertyPath: m_Name

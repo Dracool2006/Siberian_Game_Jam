@@ -7,16 +7,19 @@ public class Gun : WeaponBase
 
     //first use right mouse button for changing mode
     private bool button = false;
-
+    public RangeWeaponMode weaponMode;
     // статы разных типов оружия
     public PistolStats pistolStats;
     public ShootgunStats shootgunStats;
     public MachinegunStats machinegunStats;
+    public Animator muzzleFlashAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-
+      SetWeaponMode(1);
+      weaponMode = RangeWeaponMode.pistol;
+      muzzleFlashAnimator = GetComponent <Animator> ();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Gun : WeaponBase
 
       mode = modeNumber;
       ChangeMode(mode);
+
       //print(mode);
 
     }
@@ -54,6 +58,8 @@ public class Gun : WeaponBase
             Instantiate (bullet, barrel.position, barrel.rotation);
           }
 
+          muzzleFlashAnimator.SetTrigger("Shoot");
+
 
           currentBulletsInMagazine = currentBulletsInMagazine - 1;
           //запускаем кулдаун
@@ -65,13 +71,19 @@ public class Gun : WeaponBase
           StartCoroutine(reloading(reloadingTime));
         }
       }
+    }
 
+    public IEnumerator AbilityTimer(float waitTime)
+    {
+      yield return new WaitForSeconds(waitTime);
+      ChangeMode(1);
     }
 
     public void ChangeMode(int mode)
     {
         if (mode == 1) // pistol
         {
+          weaponMode = RangeWeaponMode.pistol;
           reloadingTime = pistolStats.reloadingTime;
           MaxBulletsInMagazine = pistolStats.MaxBulletsInMagazine;
           currentBulletsInMagazine = MaxBulletsInMagazine;
@@ -81,29 +93,35 @@ public class Gun : WeaponBase
         }
         else if (mode == 2) // machinegun
         {
-
+          weaponMode = RangeWeaponMode.machinegun;
           reloadingTime = machinegunStats.reloadingTime;
           MaxBulletsInMagazine = machinegunStats.MaxBulletsInMagazine;
           currentBulletsInMagazine = MaxBulletsInMagazine;
           shootingSpeed = machinegunStats.shootingSpeed;
           bullets = machinegunStats.BulletsList;
 
+          StartCoroutine(AbilityTimer(machinegunStats.machinegunTime));
         }
+
         else if(mode == 3) // shootgun
         {
-
+          weaponMode = RangeWeaponMode.shootgun;
           reloadingTime = shootgunStats.reloadingTime;
           MaxBulletsInMagazine = shootgunStats.MaxBulletsInMagazine;
           currentBulletsInMagazine = MaxBulletsInMagazine;
           shootingSpeed = shootgunStats.shootingSpeed;
           bullets = shootgunStats.BulletsList;
+
+          StartCoroutine(AbilityTimer(shootgunStats.shootgunTime));
         }
     }
-
 }
 
-enum RangeWeaponMode{
-  gun,
-  shootgun,
-  machinegun
+
+
+
+public enum RangeWeaponMode{
+  pistol = 1,
+  machinegun = 2,
+  shootgun = 3
 }

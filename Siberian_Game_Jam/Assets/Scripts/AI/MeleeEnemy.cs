@@ -20,7 +20,7 @@ public class MeleeEnemy : Enemy
 
 
     public override void AttackStart(){
-        anim.SetBool("Attack", true);
+        enemyAnimator.SetTrigger("Attack");
         //Debug.Log("EnemyAttack");
         state = States.attackig;
         //EquippedWeapon.SetAttackColliderActive(true);
@@ -28,7 +28,7 @@ public class MeleeEnemy : Enemy
     }
 
     public override void AttackEnd(){
-        anim.SetBool("Attack", false);
+        //enemyAnimator.SetBool("Attack", false);
         state = States.lookingfor;
         //EquippedWeapon.SetAttackColliderActive(true);
     }
