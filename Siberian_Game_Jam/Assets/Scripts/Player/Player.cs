@@ -64,13 +64,13 @@ public class Player : PawnBase
 
     public void RescaleHealPoint()
    {
-      // UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
+      UI.GetComponent<UIGameMode>().ShowSoulLevel(GetSoul());
        UI.GetComponent<UIGameMode>().SetHealSlider(GetCurrentHP());
    }
 
    public void RescaleSoul()
    {
-      //UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
+      UI.GetComponent<UIGameMode>().ShowHealPointLevel(GetCurrentHP());
        UI.GetComponent<UIGameMode>().SetSoulSlider(GetSoul());
    }
 

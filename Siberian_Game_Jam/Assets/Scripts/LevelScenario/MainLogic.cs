@@ -59,7 +59,7 @@ public class MainLogic : MonoBehaviour
     {
         Rain.GetComponent<Rain>().SetRain(ProgressLevel);
         Water.GetComponent<Water>().SetProgress(ProgressLevel);
-        TextPrigress.text = ProgressLevel.ToString();
+        TextPrigress.text = (500- ProgressLevel).ToString();
         AllSpawn.GetComponent<PuppeteerSpawn>().SetProgress(ProgressLevel);
     }
 
