@@ -448,6 +448,7 @@ MonoBehaviour:
   enemyAnimator: {fileID: 0}
   otherEnemyDetector: {fileID: 9079601657936111822}
   PrefabSoul: {fileID: 2825837462086466450, guid: 6e9929f5dd0f58549beecda159c1d331, type: 3}
+  AudioDead: {fileID: 5506486829016591574, guid: 2925fb5cfe4fc8d46a14a57ac934a5ae, type: 3}
 --- !u!95 &979583792226328607
 Animator:
   serializedVersion: 3

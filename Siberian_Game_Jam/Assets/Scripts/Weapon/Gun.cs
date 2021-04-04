@@ -14,6 +14,8 @@ public class Gun : WeaponBase
     public MachinegunStats machinegunStats;
     public Animator muzzleFlashAnimator;
 
+    public AudioSource AudioShoot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +44,16 @@ public class Gun : WeaponBase
 
     public override void Shoot()
     {
-      // если сейчас не кулдаун
-      if(Canshot)
-      {
-        //если есть патроны
-        if (currentBulletsInMagazine > 0 && bullet != null){
+        // если сейчас не кулдаун
+         if(Canshot)
+         {
+            //если есть патроны
+            if (currentBulletsInMagazine > 0 && bullet != null){
 
-          if (barrel == null)
-            barrel = (transform.Find ("Barrel")).transform;
+                AudioShoot.Play();
+
+             if (barrel == null)
+                barrel = (transform.Find ("Barrel")).transform;
 
           // создаем проджектайл
           foreach (GameObject bullet in bullets )
@@ -68,7 +72,7 @@ public class Gun : WeaponBase
         //если патронов нет, то перезаряжаем
         if (currentBulletsInMagazine <= 0 && !isReloading){
 
-          StartCoroutine(reloading(reloadingTime));
+            StartCoroutine(reloading(reloadingTime));
         }
       }
     }

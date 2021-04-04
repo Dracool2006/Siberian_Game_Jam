@@ -6,6 +6,12 @@ public class PlayerActions : MonoBehaviour
 {
     public GameObject equippedweapon;
     private Player player;
+
+
+    public AudioSource MActive1;
+    public AudioSource MActive2;
+    public AudioSource MActive3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +39,7 @@ public class PlayerActions : MonoBehaviour
     {
       if(Input.GetButton("Fire1"))
       {
-          Attack();
+            Attack();
       }
 
 
@@ -44,38 +50,40 @@ public class PlayerActions : MonoBehaviour
 
       if(Input.GetButtonDown("Ability1"))
       {
-        if(!(player.NotLimitSoul()))
+        if(player.GetSoul() > player.machineGunSoulsDemand)
         {
-          ChangeWeaponMode(2);
-          player.SetSouls(player.GetSoul() - player.machineGunSoulsDemand);
+            ChangeWeaponMode(2);
+            player.SetSouls(player.GetSoul() - player.machineGunSoulsDemand);
 
-          player.RescaleSoul();
+            player.RescaleSoul();
+                MActive1.Play();
         }
 
       }
 
       if(Input.GetButtonDown("Ability2"))
       {
-        if(!(player.NotLimitSoul()))
+        if(player.GetSoul() > player.healSoulsDemand)
         {
           HealPlayer(player.healTime);
 
           player.SetSouls(player.GetSoul() - player.healSoulsDemand);
           player.RescaleSoul();
+                MActive2.Play();
         }
 
       }
 
       if(Input.GetButtonDown("Ability3"))
       {
-        if(!(player.NotLimitSoul()))
-        {
-          ChangeWeaponMode(3);
-          player.SetSouls(player.GetSoul() - player.shootGunSoulsDemand);
+            if (player.GetSoul() > player.shootGunSoulsDemand)
+            {
+                ChangeWeaponMode(3);
+                player.SetSouls(player.GetSoul() - player.shootGunSoulsDemand);
 
-          player.RescaleSoul();
-        }
-
+                player.RescaleSoul();
+                MActive3.Play();
+            }
       }
 
     }
@@ -95,8 +103,8 @@ public class PlayerActions : MonoBehaviour
 
     void Attack()
     {
-        if(equippedweapon){
-            Debug.Log("Attack");
+        if(equippedweapon)
+        {
             equippedweapon.GetComponent<Gun>().Shoot();
         }
     }
