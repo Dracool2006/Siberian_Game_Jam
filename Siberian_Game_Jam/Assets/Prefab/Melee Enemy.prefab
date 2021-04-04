@@ -434,7 +434,7 @@ MonoBehaviour:
   attackCooldownTime: 2
   EquippedWeapon: {fileID: 6134645552772937314}
   WeaponSokect: {fileID: 3871415938704153698}
-  state: 1
+  state: 0
   enemyType: 1
   playerDetector: {fileID: 6897291434603733857}
   enemyAnimator: {fileID: 0}

@@ -414,7 +414,7 @@ MonoBehaviour:
   state: 0
   enemyType: 0
   playerDetector: {fileID: 6080649233536388111}
-  anim: {fileID: 979583792226328607}
+  enemyAnimator: {fileID: 0}
   otherEnemyDetector: {fileID: 9079601657936111822}
   PrefabSoul: {fileID: 2825837462086466450, guid: 6e9929f5dd0f58549beecda159c1d331, type: 3}
 --- !u!95 &979583792226328607
@@ -427,7 +427,7 @@ Animator:
   m_GameObject: {fileID: 6721302636804602617}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f6ccbfd4da18a3b4b82b5608979812f7, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -551,6 +551,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4669182559751897547, guid: eb3e998e25adec04fb7c830ea8559853, type: 3}
+      propertyPath: BulletsList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669182559751897547, guid: eb3e998e25adec04fb7c830ea8559853, type: 3}
+      propertyPath: BulletsList.Array.data[0]
+      value: 
+      objectReference: {fileID: 7221790135438144245, guid: 75b59535ca4792846b0622b2c8b4f723, type: 3}
     - target: {fileID: 5191440435245403457, guid: eb3e998e25adec04fb7c830ea8559853, type: 3}
       propertyPath: m_Name
       value: Gun
