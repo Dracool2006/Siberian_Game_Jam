@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639773904ee96994195c05f8c4a35d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  damage: 35
+  speed: 6
+  damage: -35
   barrel: {fileID: 0}
   spreading: 2
   isThisEnemybullet: 0
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7a0845c60aced4387f897f95aa3352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  damage: 35
+  speed: 6
+  damage: -35
   barrel: {fileID: 0}
   spreading: 0
   isThisEnemybullet: 0
