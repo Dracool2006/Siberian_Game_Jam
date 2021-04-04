@@ -10,13 +10,13 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-[Ss]iberian_Game_Jam/[Ll]ibrary/
-[Ss]iberian_Game_Jam/[Tt]emp/
-[Ss]iberian_Game_Jam/[Oo]bj/
-[Ss]iberian_Game_Jam/[Bb]uild/
-[Ss]iberian_Game_Jam/[Bb]uilds/
-[Ss]iberian_Game_Jam/[Ll]ogs/
-[Ss]iberian_Game_Jam/[Mm]emoryCaptures/
+[Ss]iberian_[Gg]ame_[Jj]am/[Ll]ibrary/
+[Ss]iberian_[Gg]ame_[Jj]am/[Tt]emp/
+[Ss]iberian_[Gg]ame_[Jj]am/[Oo]bj/
+[Ss]iberian_[Gg]ame_[Jj]am/[Bb]uild/
+[Ss]iberian_[Gg]ame_[Jj]am/[Bb]uilds/
+[Ss]iberian_[Gg]ame_[Jj]am/[Ll]ogs/
+[Ss]iberian_[Gg]ame_[Jj]am/[Mm]emory[Cc]aptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -65,3 +65,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+*.log
+
+Siberian_Game_Jam/Library/ArtifactDB
