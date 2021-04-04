@@ -102,7 +102,9 @@ public class Enemy : PawnBase
     public override void Death()
     {
         //Debug.Log("Enemy Death");
+        enemyAnimator.SetTrigger("Death");
         gameObject.GetComponent<Collider2D> ().enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
         SetIsDead (true);
         state = States.dead;
         StartCoroutine(Disappear(3.0f));
@@ -169,7 +171,7 @@ public class Enemy : PawnBase
           transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
       }
-    
+
   /*  else
     {
       enemyAnimator.SetBool("MoveRight", false);
