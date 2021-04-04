@@ -16,6 +16,14 @@ public class MainLogic : MonoBehaviour
 
     public TMP_Text TextPrigress;
 
+    public AudioSource AudioSoul;
+    public AudioSource AudioMelody2;
+    public AudioSource AudioMelodyMain;
+
+    private float FlashTimer = 50;
+    public GameObject Flash;
+    public AudioSource AudioFlash;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +33,18 @@ public class MainLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FlashTimer -= Time.deltaTime;
+        Flash.SetActive(false);
+        if (FlashTimer < 0)
+        {
+            FlashTimer = UnityEngine.Random.Range(5, 50);
+            if(ProgressLevel > 300)
+            {
+                AudioFlash.Play();
+                GetComponent<CameraMovement>().Shaking();
+                Flash.SetActive(true);
+            }
+        }
     }
 
     public void EnemyDead()
@@ -46,6 +65,11 @@ public class MainLogic : MonoBehaviour
     {
         if(ProgressLevel < 500)
         {
+            if(!AudioSoul.isPlaying)
+                AudioSoul.Play();
+
+            AudioMelody2.volume = ProgressLevel / (5000);
+            AudioMelodyMain.volume = 1 - ProgressLevel / (1000);
             ProgressLevel++;
         }
         else

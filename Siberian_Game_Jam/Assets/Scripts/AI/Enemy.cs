@@ -23,6 +23,8 @@ public class Enemy : PawnBase
 
     public GameObject PrefabSoul;
 
+    public AudioSource AudioDead;
+
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +99,7 @@ public class Enemy : PawnBase
     // метод смерти
     public override void Death()
     {
+        AudioDead.Play();
         //Debug.Log("Enemy Death");
         gameObject.GetComponent<Collider2D> ().enabled = false;
         SetIsDead (true);

@@ -19,28 +19,29 @@ public class PuppeteerEnemys : MonoBehaviour
         ProgressSpawn[1] = new int[5];
         ProgressSpawn[2] = new int[5];
         ProgressSpawn[3] = new int[5];
+
         ProgressSpawn[0][0] = 0;
-        ProgressSpawn[0][1] = 50;
+        ProgressSpawn[0][1] = 80;
         ProgressSpawn[0][2] = 90;
         ProgressSpawn[0][3] = 10;
         ProgressSpawn[0][4] = 10;
 
         ProgressSpawn[1][0] = 25;
-        ProgressSpawn[1][1] = 50;
+        ProgressSpawn[1][1] = 90;
         ProgressSpawn[1][2] = 80;
         ProgressSpawn[1][3] = 20;
         ProgressSpawn[1][4] = 20;
 
         ProgressSpawn[2][0] = 50;
-        ProgressSpawn[2][1] = 75;
-        ProgressSpawn[2][2] = 80;
-        ProgressSpawn[2][3] = 20;
+        ProgressSpawn[2][1] = 100;
+        ProgressSpawn[2][2] = 70;
+        ProgressSpawn[2][3] = 30;
         ProgressSpawn[2][4] = 30;
 
         ProgressSpawn[3][0] = 75;
         ProgressSpawn[3][1] = 100;
-        ProgressSpawn[3][2] = 80;
-        ProgressSpawn[3][3] = 20;
+        ProgressSpawn[3][2] = 50;
+        ProgressSpawn[3][3] = 50;
         ProgressSpawn[3][4] = 50;
 
         foreach (Transform child in GetComponentInChildren<Transform>())

@@ -6,6 +6,7 @@ public class PlayerActions : MonoBehaviour
 {
     public GameObject equippedweapon;
     private Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,7 @@ public class PlayerActions : MonoBehaviour
     {
       if(Input.GetButton("Fire1"))
       {
-          Attack();
+            Attack();
       }
 
 
@@ -95,8 +96,8 @@ public class PlayerActions : MonoBehaviour
 
     void Attack()
     {
-        if(equippedweapon){
-            Debug.Log("Attack");
+        if(equippedweapon)
+        {
             equippedweapon.GetComponent<Gun>().Shoot();
         }
     }

@@ -22,6 +22,8 @@ public class Player : PawnBase
     private float SoulGivingTime = 0;
     public GameObject MainLogic;
 
+    public AudioSource AudioSoul;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -169,6 +171,7 @@ public class Player : PawnBase
                 {
                     Destroy(col.gameObject);
                     RescaleSoul();
+                    AudioSoul.Play();
                 }
             }
         }
