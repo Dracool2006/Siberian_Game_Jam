@@ -7,12 +7,14 @@ public class WeaponBase : MonoBehaviour
 
     public Transform barrel;
     public GameObject bullet;
+    public GameObject[] bullets;
     public float reloadingTime = 2f;
     public int MaxBulletsInMagazine = 6;
     public int currentBulletsInMagazine = 6;
     public bool isReloading = false;
-    protected bool isCanshot = true;
-    public float shootingSpeed = 60.0f; // указывается количество выстрелов в секунду
+    protected bool Canshot = true;
+    public float shootingSpeed = 60.0f; // указывается количество выстрелов в минуту
+    public int mode = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +35,9 @@ public class WeaponBase : MonoBehaviour
 
     public IEnumerator shootingCooldown(float waitTime)
     {
-        isCanshot = false;
+        Canshot = false;
         yield return new WaitForSeconds(waitTime);
-        isCanshot = true;
+        Canshot = true;
 
     }
 
@@ -47,5 +49,7 @@ public class WeaponBase : MonoBehaviour
         isReloading = false;
 
     }
+
+
 
 }

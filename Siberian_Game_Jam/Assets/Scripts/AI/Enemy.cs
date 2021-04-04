@@ -17,8 +17,9 @@ public class Enemy : PawnBase
 
     private Transform target;
     private Transform bodySprite;
+    private Rigidbody2D rb;
     protected bool isAttackCooldown = false;
-    Rigidbody2D rb;
+
 
     public GameObject PrefabSoul;
 
@@ -33,12 +34,16 @@ public class Enemy : PawnBase
         anim = GetComponent <Animator> ();
         //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
         target = GameObject.FindWithTag("Player").transform;
+        if (enemyType == EnemyTypes.ranged)
+          EquippedWeapon.GetComponent<Gun>().SetWeaponMode(1);
     }
 
 
     // Update is called once per frame
     public virtual void Update()
     {
+
+
 
       transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
       // проверяем, что ИИ не мертв
@@ -53,7 +58,7 @@ public class Enemy : PawnBase
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
         if(!isAttackCooldown && playerDetector.GetCanWeShoot())
         {
-          Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
+          //Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
           AttackStart();
         }
         else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())

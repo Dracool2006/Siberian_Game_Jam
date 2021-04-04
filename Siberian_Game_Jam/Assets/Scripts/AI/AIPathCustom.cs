@@ -64,13 +64,14 @@ public class AIPathCustom : MonoBehaviour
     void FixedUpdate ()
     {
 
-        if(enemy.state != States.dead && enemy.state != States.passive){
-            EnemyInfoSocketRotation();
-            Movement();
-        }
-        else if(enemy.state == States.dead)
-            CancelInvoke("UpdatePath");
-        
+      if(enemy.state != States.dead && enemy.state != States.passive){
+        EnemyInfoSocketRotation();
+        Movement();
+
+      }
+      else if(enemy.state == States.dead)
+        CancelInvoke("UpdatePath");
+
     }
 
 
@@ -88,11 +89,8 @@ public class AIPathCustom : MonoBehaviour
     void UpdatePath()
     {
 
-        /* Ищем цель */
-        if (rb) 
-        {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
-        }
+      /* Ищем цель */
+        seeker.StartPath(rb.position, target.position, OnPathComplete);
 
     }
 
@@ -119,6 +117,7 @@ public class AIPathCustom : MonoBehaviour
           return;
         }
 
+        Debug.Log("Movement");
         // проверка достигли ли мы цонца пути или нет
 
         if(currentWaypoint >= path.vectorPath.Count)
@@ -138,6 +137,8 @@ public class AIPathCustom : MonoBehaviour
 
       //  RaycastHit2D otherAgentInfo = Physics2D.Raycast(otherEnemyInfo.position, direction, rayLenght);
 
+        Debug.Log("Can we move" + enemy.otherEnemyDetector.GetCanWeMove());
+
         //вызов функции движения из Enemy
         // Если находисмся в состоянии поиска и нет препятствия перед АИ, то движемся
         if(Vector2.Distance(rb.position, target.position) >= minDistanceToPlayer && enemy.state == States.lookingfor && enemy.otherEnemyDetector.GetCanWeMove()){
@@ -156,13 +157,7 @@ public class AIPathCustom : MonoBehaviour
     }
 
 
-      /*
-      Vector2[] GetRotationMatrix(float degree){
 
-      Vector2[] rotMatrix = new Vector2[2] {new Vector2(Mathf.Cos(Mathf.Deg2Rad*degree),Mathf.Sin(Mathf.Deg2Rad*degree)), new Vector2(-1 * Mathf.Sin(Mathf.Deg2Rad*degree),Mathf.Cos(Mathf.Deg2Rad*degree))};
-
-      return rotMatrix;
-    }*/
 
 
 }

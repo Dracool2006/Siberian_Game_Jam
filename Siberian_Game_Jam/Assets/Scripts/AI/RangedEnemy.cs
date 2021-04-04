@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
-    /*// Start is called before the first frame update
-    void Start()
+    // Start is called before the first frame update
+    /*void Start()
     {
-
+      equippedweapon.GetComponent<Gun>().SetWeaponMode(1);
     }
 
     // Update is called once per frame

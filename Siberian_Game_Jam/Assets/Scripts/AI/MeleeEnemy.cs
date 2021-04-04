@@ -21,7 +21,7 @@ public class MeleeEnemy : Enemy
 
     public override void AttackStart(){
         anim.SetBool("Attack", true);
-        Debug.Log("EnemyAttack");
+        //Debug.Log("EnemyAttack");
         state = States.attackig;
         //EquippedWeapon.SetAttackColliderActive(true);
         StartCoroutine(AttackCooldown(attackCooldownTime));
