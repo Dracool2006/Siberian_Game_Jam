@@ -15,7 +15,7 @@ public class UIGameMode : MonoBehaviour
     public Image M2Img;
     public Image M3Img;
 
-    public int machineGunSoulsDemand = 25;
+    public int machineGunSoulsDemand =  25;
     public int shootGunSoulsDemand = 35;
     public int healSoulsDemand = 40;
 
@@ -38,19 +38,21 @@ public class UIGameMode : MonoBehaviour
 
     public void ShowSoulLevel(int val)
     {
-        SoulText.text = val.ToString();
-        SoulScale.transform.position = new Vector3(0, -val, 0);
-        ShowMagik(val);
+        int vals = val;
+        ShowMagik(vals);
+        SoulScale.transform.position = new Vector3(0, -1 * vals, 0);
+        SoulText.text = vals.ToString();
     }
 
     public void ShowHealPointLevel(int val)
     {
-        HealPointScale.transform.position = new Vector3(0, -val * 3.5f, 0);
+        HealPointScale.transform.position = new Vector3(0, -1 * val * 3.5f, 0);
     }
 
-    public void ShowMagik(int val)
+    public void ShowMagik(int soulVal)
     {
-        if(machineGunSoulsDemand < val)
+        //Debug.Log(machineGunSoulsDemand + " " + soulVal + " " + M1Img.color);
+        if(machineGunSoulsDemand < soulVal)
         {
             M1Img.color = new Color(1, 1, 1);
         }
@@ -59,7 +61,7 @@ public class UIGameMode : MonoBehaviour
             M1Img.color = new Color(0, 0, 0);
         }
 
-        if(healSoulsDemand < val)
+        if(healSoulsDemand < soulVal)
         {
             M2Img.color = new Color(1, 1, 1);
         }
@@ -68,7 +70,7 @@ public class UIGameMode : MonoBehaviour
             M2Img.color = new Color(0, 0, 0);
         }
 
-        if(shootGunSoulsDemand < val)
+        if(shootGunSoulsDemand < soulVal)
         {
             M3Img.color = new Color(1, 1, 1);
         }

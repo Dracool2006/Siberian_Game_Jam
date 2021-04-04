@@ -10,7 +10,7 @@ public class PawnBase : MonoBehaviour
     public float maxSpeed;
     private int currentHP = 100;
     private bool isDead = false;
-    private int Soul = 0;
+    private int Soul = 10;
     public int LimitSoul = 100;
 
     // Start is called before the first frame update

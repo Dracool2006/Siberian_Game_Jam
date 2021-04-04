@@ -26,19 +26,19 @@ public class PuppeteerEnemys : MonoBehaviour
         ProgressSpawn[0][3] = 10;
         ProgressSpawn[0][4] = 10;
 
-        ProgressSpawn[1][0] = 25;
+        ProgressSpawn[1][0] = 100;
         ProgressSpawn[1][1] = 90;
         ProgressSpawn[1][2] = 80;
         ProgressSpawn[1][3] = 20;
         ProgressSpawn[1][4] = 20;
 
-        ProgressSpawn[2][0] = 50;
+        ProgressSpawn[2][0] = 200;
         ProgressSpawn[2][1] = 100;
         ProgressSpawn[2][2] = 70;
         ProgressSpawn[2][3] = 30;
         ProgressSpawn[2][4] = 30;
 
-        ProgressSpawn[3][0] = 75;
+        ProgressSpawn[3][0] = 300;
         ProgressSpawn[3][1] = 100;
         ProgressSpawn[3][2] = 50;
         ProgressSpawn[3][3] = 50;
@@ -87,9 +87,8 @@ public class PuppeteerEnemys : MonoBehaviour
         }
 
         //spawn enemy
-        if (UnityEngine.Random.Range(0, 100) >= dataValid[1] && dataValid[4] < AllEnemys.Count)
+        if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
         {
-
             GameObject NewEnemy;
             //spawn melee
             if (UnityEngine.Random.Range(0, 100) <= dataValid[2])

@@ -35,7 +35,7 @@ public class PlayerDetector : MonoBehaviour
         else
           canWeShoot = false;
 
-        Debug.Log("Player is" + playerisFound);
+        //Debug.Log("Player is" + playerisFound);
 
     }
 

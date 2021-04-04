@@ -64,7 +64,7 @@ public class AIPathCustom : MonoBehaviour
     void FixedUpdate ()
     {
 
-      if(enemy.state != States.dead && enemy.state != States.passive){
+      if(enemy.state != States.dead && enemy.state != States.passive && rb){
         EnemyInfoSocketRotation();
         Movement();
 
@@ -103,8 +103,8 @@ public class AIPathCustom : MonoBehaviour
         path = p;
         currentWaypoint = 0;
       }
-      else
-       Debug.Log ("Path is not valid");
+      //else
+      // Debug.Log ("Path is not valid");
     }
 
     // движемся к цели
@@ -117,7 +117,7 @@ public class AIPathCustom : MonoBehaviour
           return;
         }
 
-        Debug.Log("Movement");
+        //Debug.Log("Movement");
         // проверка достигли ли мы цонца пути или нет
 
         if(currentWaypoint >= path.vectorPath.Count)
@@ -137,7 +137,7 @@ public class AIPathCustom : MonoBehaviour
 
       //  RaycastHit2D otherAgentInfo = Physics2D.Raycast(otherEnemyInfo.position, direction, rayLenght);
 
-        Debug.Log("Can we move" + enemy.otherEnemyDetector.GetCanWeMove());
+        //Debug.Log("Can we move" + enemy.otherEnemyDetector.GetCanWeMove());
 
         //вызов функции движения из Enemy
         // Если находисмся в состоянии поиска и нет препятствия перед АИ, то движемся
