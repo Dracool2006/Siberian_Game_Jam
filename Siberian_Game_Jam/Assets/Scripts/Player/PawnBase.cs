@@ -90,4 +90,8 @@ public class PawnBase : MonoBehaviour
         return (Soul < LimitSoul);
     }
 
+    public void TakeAwaySoul()
+    {
+        Soul--;
+    }
 }

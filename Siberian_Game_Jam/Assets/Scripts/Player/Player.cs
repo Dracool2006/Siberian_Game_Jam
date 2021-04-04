@@ -19,7 +19,8 @@ public class Player : PawnBase
     private Vector2 mousePos;
     #endregion
 
-
+    private float SoulGivingTime = 0;
+    public GameObject MainLogic;
 
     // Start is called before the first frame update
     void Start()
@@ -168,6 +169,24 @@ public class Player : PawnBase
                 {
                     Destroy(col.gameObject);
                     RescaleSoul();
+                }
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D col) 
+    { 
+        if (col.gameObject.tag == "Altar")
+        {
+            if(GetSoul() > 0)
+            {
+                SoulGivingTime -= Time.deltaTime;
+                if (SoulGivingTime < 0)
+                {
+                    SoulGivingTime = 0.1f;
+                    TakeAwaySoul();
+                    RescaleSoul();
+                    MainLogic.GetComponent<MainLogic>().AddSoul();
                 }
             }
         }

@@ -8,12 +8,14 @@ public class FinalMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
-    public void ToStartGame()
+    void Update()
     {
-        StartCoroutine(LoadYourAsyncScene());
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartCoroutine(LoadYourAsyncScene());
+        }
     }
 
     IEnumerator LoadYourAsyncScene()
