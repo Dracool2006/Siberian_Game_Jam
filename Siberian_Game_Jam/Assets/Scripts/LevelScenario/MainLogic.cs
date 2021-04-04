@@ -24,6 +24,8 @@ public class MainLogic : MonoBehaviour
     public GameObject Flash;
     public AudioSource AudioFlash;
 
+    public GameObject Pawns;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +73,7 @@ public class MainLogic : MonoBehaviour
             AudioMelody2.volume = ProgressLevel / (5000);
             AudioMelodyMain.volume = 1 - ProgressLevel / (1000);
             ProgressLevel++;
+            Pawns.GetComponent<PuppeteerSpawn>().SetProgress(ProgressLevel);
         }
         else
         {
