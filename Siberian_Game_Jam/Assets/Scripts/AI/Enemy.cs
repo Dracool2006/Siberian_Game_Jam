@@ -63,7 +63,7 @@ public class Enemy : PawnBase
         Debug.Log($" isAttackCooldown {isAttackCooldown}");
         Debug.Log($" summt {!isAttackCooldown && playerDetector.GetCanWeShoot()}");
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
-        if(!isAttackCooldown && playerDetector.GetCanWeShoot())
+        if(!isAttackCooldown && playerDetector.GetCanWeShoot() && !GetIsDead())
         {
           Debug.Log("EnemyAttack");
           //Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
@@ -99,6 +99,7 @@ public class Enemy : PawnBase
         if(GetCurrentHP() <= 0 && gameObject.GetComponent<Collider2D>().enabled == true)
         {
         //Debug.Log("Death");
+            //SetIsDead(true);
             Death();
         }
     }
