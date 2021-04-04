@@ -140,10 +140,11 @@ public class Player : PawnBase
 
     public override void ChangeHP(int deltaHP)
     {
+        RescaleHealPoint();
 
-        if (deltaHP <0)
+        if (deltaHP < 0)
         {
-          playerAnimator.SetTrigger("Damage");
+            playerAnimator.SetTrigger("Damage");
         }
         SetCurrentHP(GetCurrentHP() + deltaHP);
         RescaleHealPoint();
