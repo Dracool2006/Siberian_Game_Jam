@@ -28,7 +28,6 @@ public class UIGameMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ShowMagik(0);
     }
 
     public void ShowBullet(int bullet, int maxBullet)
@@ -38,21 +37,7 @@ public class UIGameMode : MonoBehaviour
 
     public void ShowSoulLevel(int val)
     {
-        int vals = val;
-        ShowMagik(vals);
-        SoulScale.transform.position = new Vector3(0, -1 * vals, 0);
-        SoulText.text = vals.ToString();
-    }
-
-    public void ShowHealPointLevel(int val)
-    {
-        HealPointScale.transform.position = new Vector3(0, -1 * val * 3.5f, 0);
-    }
-
-    public void ShowMagik(int soulVal)
-    {
-        //Debug.Log(machineGunSoulsDemand + " " + soulVal + " " + M1Img.color);
-        if(machineGunSoulsDemand < soulVal)
+        if (machineGunSoulsDemand < val)
         {
             M1Img.color = new Color(1, 1, 1);
         }
@@ -61,7 +46,7 @@ public class UIGameMode : MonoBehaviour
             M1Img.color = new Color(0, 0, 0);
         }
 
-        if(healSoulsDemand < soulVal)
+        if (healSoulsDemand < val)
         {
             M2Img.color = new Color(1, 1, 1);
         }
@@ -70,7 +55,7 @@ public class UIGameMode : MonoBehaviour
             M2Img.color = new Color(0, 0, 0);
         }
 
-        if(shootGunSoulsDemand < soulVal)
+        if (shootGunSoulsDemand < val)
         {
             M3Img.color = new Color(1, 1, 1);
         }
@@ -78,5 +63,13 @@ public class UIGameMode : MonoBehaviour
         {
             M3Img.color = new Color(0, 0, 0);
         }
+
+        SoulScale.transform.position = new Vector3(0, val - 100, 0);
+        SoulText.text = val.ToString();
+    }
+
+    public void ShowHealPointLevel(int val)
+    {
+        HealPointScale.transform.position = new Vector3(0, val * 3.5f - 350, 0);
     }
 }
