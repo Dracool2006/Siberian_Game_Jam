@@ -9,5 +9,7 @@ public class MachinegunStats : MonoBehaviour
       public int MaxBulletsInMagazine = 24;
       public float shootingSpeed = 240f; // указывается количество выстрелов в минуту
       public GameObject[] BulletsList;
+      public float machinegunTime = 30f;
+    //  public int soulsDemand = 25;
 
 }

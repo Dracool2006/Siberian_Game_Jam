@@ -44,21 +44,49 @@ public class PlayerActions : MonoBehaviour
 
       if(Input.GetButtonDown("Ability1"))
       {
-        ChangeWeaponMode(1);
+        if(!(player.NotLimitSoul()))
+        {
+          ChangeWeaponMode(2);
+          player.SetSouls(player.GetSoul() - player.machineGunSoulsDemand);
+
+          player.RescaleSoul();
+        }
+
       }
 
       if(Input.GetButtonDown("Ability2"))
       {
-        ChangeWeaponMode(2);
+        if(!(player.NotLimitSoul()))
+        {
+          HealPlayer(player.healTime);
+
+          player.SetSouls(player.GetSoul() - player.healSoulsDemand);
+          player.RescaleSoul();
+        }
+
       }
 
       if(Input.GetButtonDown("Ability3"))
       {
-        ChangeWeaponMode(3);
+        if(!(player.NotLimitSoul()))
+        {
+          ChangeWeaponMode(3);
+          player.SetSouls(player.GetSoul() - player.shootGunSoulsDemand);
+
+          player.RescaleSoul();
+        }
+
       }
 
     }
 
+    IEnumerator HealPlayer(float waitTime)
+    {
+
+      yield return new WaitForSeconds(waitTime);
+      player.ChangeHP(player.healCount);
+
+  }
 
     void ChangeWeaponMode(int modeNumber)
     {

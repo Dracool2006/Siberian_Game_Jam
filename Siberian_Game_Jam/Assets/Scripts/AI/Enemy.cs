@@ -12,7 +12,7 @@ public class Enemy : PawnBase
     public States state;
     public EnemyTypes enemyType;
     public PlayerDetector playerDetector;
-    public Animator anim;
+    public Animator enemyAnimator;
     public OtherEnemyDetector otherEnemyDetector;
 
     private Transform target;
@@ -31,7 +31,7 @@ public class Enemy : PawnBase
         state = (state != States.passive) ? States.lookingfor : States.passive;
         rb = GetComponent<Rigidbody2D> ();
         bodySprite = transform.Find("Body").transform;
-        anim = GetComponent <Animator> ();
+        enemyAnimator = GetComponent <Animator> ();
         //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
         target = GameObject.FindWithTag("Player").transform;
         if (enemyType == EnemyTypes.ranged)
@@ -49,7 +49,7 @@ public class Enemy : PawnBase
       // проверяем, что ИИ не мертв
       if(state != States.dead && state != States.passive)
       {
-        Rotation ();
+        SetAnimatorKeys();
         rangedWeaponRotation();
 
       //  Debug.Log($" isAttackCooldown {isAttackCooldown}");
@@ -79,6 +79,11 @@ public class Enemy : PawnBase
     // метод изменения количества HP
     public override void ChangeHP(int deltaHP)
     {
+
+        if (deltaHP <0)
+        {
+          enemyAnimator.SetTrigger("Damage");
+        }
         SetCurrentHP(GetCurrentHP() + deltaHP);
         //Debug.Log(GetCurrentHP());
 
@@ -107,6 +112,54 @@ public class Enemy : PawnBase
         soul.transform.position = transform.position;
     }
 
+    void SetAnimatorKeys(){
+
+      Vector2 lookDirection = GetLookAtDirection();
+
+      if(lookDirection.normalized.y < 0.5f && lookDirection.normalized.y > -0.5f)
+      {
+
+        if (lookDirection.normalized.x < - 0.5f)
+        {
+          //Debug.Log("MoveLeft");
+          enemyAnimator.SetBool("MoveRight", false);
+          enemyAnimator.SetBool("MoveLeft", true);
+          enemyAnimator.SetBool("MoveTop", false);
+          enemyAnimator.SetBool("MoveBack", false);
+          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        }
+        else if (lookDirection.normalized.x > 0.5f)
+        {
+          enemyAnimator.SetBool("MoveRight", true);
+          enemyAnimator.SetBool("MoveLeft", false);
+          enemyAnimator.SetBool("MoveTop", false);
+          enemyAnimator.SetBool("MoveBack", false);
+          transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.y);
+        }
+      }
+      else
+      {
+        if(lookDirection.normalized.y > 0.5f)
+        {
+          enemyAnimator.SetBool("MoveBack", true);
+          enemyAnimator.SetBool("MoveLeft", false);
+          enemyAnimator.SetBool("MoveRight", false);
+          enemyAnimator.SetBool("MoveTop", false);
+          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        }
+        else if(lookDirection.normalized.y < -0.5f)
+        {
+          enemyAnimator.SetBool("MoveRight", false);
+          enemyAnimator.SetBool("MoveLeft", false);
+          enemyAnimator.SetBool("MoveTop", true);
+          enemyAnimator.SetBool("MoveBack", false);
+          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        }
+      }
+
+    }
+
+/*
     // метод, отвечающий за логику поворота врагов
     public void Rotation (){
 
@@ -182,7 +235,7 @@ public class Enemy : PawnBase
       //  Debug.Log("Enemy Move right down");
       }
     }
-
+*/
 
     public virtual void AttackStart(){
 
@@ -197,13 +250,23 @@ public class Enemy : PawnBase
     {
       if(target != null){
         //Debug.Log("rangedWeaponRotation");
-        Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - rb.position;
+        Vector2 lookDirection = GetLookAtDirection();
         float angle = Mathf.Atan2(lookDirection.y,lookDirection.x) * Mathf.Rad2Deg - 90f;
         //float angle = Mathf.Atan2(lookDirection.y,lookDirection.x) * Mathf.Rad2Deg;
         WeaponSokect.eulerAngles = new Vector3(0,0, angle);
         //Debug.Log($" lookat {WeaponSokect.rotation}");
       }
     }
+
+    Vector2 GetLookAtDirection(){
+
+      if(target != null)
+        return new Vector2(target.position.x, target.position.y) - rb.position;
+      else
+        return Vector2.zero;
+    }
+
+
 
     void OnCollisionEnter2D(Collision2D other)
     {
