@@ -8,6 +8,8 @@ public class GameMenu : MonoBehaviour
 
     public GameObject PanelOptions;
     public GameObject PanelPosthumous;
+    public GameObject Inventory;
+
 
     // Start is called before the first frame update
     void Start()
@@ -69,11 +71,14 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 0;
         PanelPosthumous.SetActive(true);
+        Inventory.SetActive(false);
     }
 
     public void OnOptions()
     {
+
         Time.timeScale = 0;
+        Inventory.SetActive(false);
         PanelOptions.SetActive(true);
     }
 
@@ -82,5 +87,6 @@ public class GameMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         PanelOptions.SetActive(false);
+        Inventory.SetActive(true);
     }
 }

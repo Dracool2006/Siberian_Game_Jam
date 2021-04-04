@@ -34,6 +34,18 @@ public class UIGameMode : MonoBehaviour
     {
     }
 
+
+    public void SetHealSlider(int value){
+
+      HealSlider.value = (float) value /100;
+    }
+
+    public void SetSoulSlider(int value){
+
+      SoulSlider.value = (float) value /100;
+      SoulText.text = value.ToString();
+    }
+
     public void ShowBullet(int bullet, int maxBullet)
     {
         BulletText.text = bullet.ToString() + "/" + maxBullet.ToString();
@@ -76,4 +88,6 @@ public class UIGameMode : MonoBehaviour
     {
         HealPointScale.transform.position = new Vector3(0, val * 3.5f - 350, 0);
     }
+
+
 }
