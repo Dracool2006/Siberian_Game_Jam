@@ -58,17 +58,17 @@ public class Enemy : PawnBase
 
         rangedWeaponRotation();
 
-        Debug.Log($" isAttackCooldown {isAttackCooldown}");
-        Debug.Log($" can we shoot {playerDetector.GetCanWeShoot()}");
-        Debug.Log($" isAttackCooldown {isAttackCooldown}");
-        Debug.Log($" summt {!isAttackCooldown && playerDetector.GetCanWeShoot()}");
+        //Debug.Log($" isAttackCooldown {isAttackCooldown}");
+        //Debug.Log($" can we shoot {playerDetector.GetCanWeShoot()}");
+        //Debug.Log($" isAttackCooldown {isAttackCooldown}");
+        //Debug.Log($" summt {!isAttackCooldown && playerDetector.GetCanWeShoot()}");
         // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
         if(!isAttackCooldown && playerDetector.GetCanWeShoot())
         {
-          Debug.Log("EnemyAttack");
+          //Debug.Log("EnemyAttack");
           //Debug.Log($" player is found {playerDetector.GetCanWeShoot()}");
           AttackStart();
-          Debug.Log("EnemyAttack");
+          //Debug.Log("EnemyAttack");
         }
         else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())
         {

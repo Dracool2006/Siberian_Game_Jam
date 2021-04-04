@@ -520,8 +520,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -0.000061035156}
-  m_SizeDelta: {x: -0.00024414, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &46154740
 MonoBehaviour:
@@ -6945,6 +6945,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148249797859524844, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: shootingSpeed
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 777230721881523968, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
       propertyPath: MActive1
       value: 
@@ -7077,6 +7081,26 @@ PrefabInstance:
       propertyPath: AudioShoot
       value: 
       objectReference: {fileID: 1047342890}
+    - target: {fileID: 1358442492686439385, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: shootingSpeed
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058511715468838816, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: shootingSpeed
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058511715468838816, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: BulletsList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058511715468838816, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: BulletsList.Array.data[3]
+      value: 
+      objectReference: {fileID: 7221790135438144245, guid: d76c9eefd2e7b164083b079615769464, type: 3}
+    - target: {fileID: 4058511715468838816, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
+      propertyPath: BulletsList.Array.data[4]
+      value: 
+      objectReference: {fileID: 7221790135438144245, guid: d76c9eefd2e7b164083b079615769464, type: 3}
     m_RemovedComponents:
     - {fileID: 777230721881523972, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ed749b4d82599a4291c3314a3b1a384, type: 3}
@@ -12199,7 +12223,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -19.69, y: 0}
+  m_Offset: {x: -23.215374, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12210,7 +12234,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 30}
+  m_Size: {x: 8.050743, y: 30}
   m_EdgeRadius: 0
 --- !u!61 &1298847261
 BoxCollider2D:
@@ -12225,7 +12249,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 19.58, y: 0}
+  m_Offset: {x: 24.153389, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12236,7 +12260,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 30}
+  m_Size: {x: 10.146776, y: 30}
   m_EdgeRadius: 0
 --- !u!61 &1298847262
 BoxCollider2D:
@@ -12251,7 +12275,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -11.69}
+  m_Offset: {x: 0, y: -15.348909}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12262,7 +12286,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 1}
+  m_Size: {x: 40, y: 8.317818}
   m_EdgeRadius: 0
 --- !u!61 &1298847263
 BoxCollider2D:
@@ -12277,7 +12301,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 10.78}
+  m_Offset: {x: 0, y: 13.477445}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -12288,7 +12312,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 40, y: 1}
+  m_Size: {x: 40, y: 6.394888}
   m_EdgeRadius: 0
 --- !u!61 &1298847264
 BoxCollider2D:

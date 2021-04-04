@@ -86,10 +86,9 @@ public class PuppeteerEnemys : MonoBehaviour
             }
         }
 
-        Debug.Log(AllEnemys.Count);
-
         //spawn enemy
-        if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
+        //if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
+        if (true)
         {
             GameObject NewEnemy;
             //spawn melee
