@@ -10,6 +10,14 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+[Ss]iberian_Game_Jam/[Ll]ibrary/
+[Ss]iberian_Game_Jam/[Tt]emp/
+[Ss]iberian_Game_Jam/[Oo]bj/
+[Ss]iberian_Game_Jam/[Bb]uild/
+[Ss]iberian_Game_Jam/[Bb]uilds/
+[Ss]iberian_Game_Jam/[Ll]ogs/
+[Ss]iberian_Game_Jam/[Mm]emoryCaptures/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
@@ -57,4 +65,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
