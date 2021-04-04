@@ -4,44 +4,52 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    public float speed = 10f;
-    private Rigidbody2D rb;
-    public int damage = 1;
+  public float speed = 10f;
+  protected Rigidbody2D rb;
+  public int damage = 2;
+  public Transform barrel;
+  public float spreading = 0f;
+  public bool isThisEnemybullet = false; // если false, то пуля может дамажит врагов, если true, то только игрока
 
-    // Start is called before the first frame update
-    void Start()
-    {
-          rb = GetComponent<Rigidbody2D>();
-          rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
-        //  Debug.Log (new Vector3(transform.right.x, transform.up.y ,0.0f));
+  // Start is called before the first frame update
+  void Start()
+  {
+      rb = GetComponent<Rigidbody2D>();
+      Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+      Vector2 trajectory = mousePos - rb.position;
+      trajectory.x += Random.Range(-spreading, spreading);
+      trajectory.y += Random.Range(-spreading, spreading);
+      rb.AddForce(trajectory * speed, ForceMode2D.Impulse);
 
-    }
+  }
 
-    // Update is called once per frame
-    void Update()
-    {
+  void OnTriggerEnter2D(Collider2D other)
+  {
 
-    }
-
-    void OnBecameInvisible()
-    {
-      Destroy(gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-      if(other.gameObject.tag == "Enemy"){
-            Destroy(gameObject);
-            if (other.gameObject.GetComponent<Enemy> () != null)
-            {
-              other.gameObject.GetComponent<Enemy> ().ChangeHP(damage);
-            }
+      if (other.gameObject.tag == "Enemy" && !isThisEnemybullet)
+      {
+          Destroy(gameObject);
+          if (other.gameObject.GetComponent<Enemy>() != null)
+          {
+            if(other.gameObject.GetComponent<Enemy> ().state != States.dead)
+              other.gameObject.GetComponent<Enemy>().ChangeHP(damage);
+          }
       }
-      if(other.gameObject.tag == "World"){
-            Destroy(gameObject);
+
+      if (other.gameObject.tag == "Player" && isThisEnemybullet)
+      {
+          Destroy(gameObject);
+          if (other.gameObject.GetComponent<Player>() != null)
+          {
+              other.gameObject.GetComponent<Player>().ChangeHP(damage);
+          }
       }
-    }
+
+      if (other.gameObject.tag == "World")
+      {
+          Destroy(gameObject);
+      }
+  }
 
 
 }

@@ -26,7 +26,7 @@ public class PlayerDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DetectPlayer();
+        //DetectPlayer();
 
         if(playerisFound && !thereIsEnemyOnTheWay)
         {
@@ -34,9 +34,12 @@ public class PlayerDetector : MonoBehaviour
         }
         else
           canWeShoot = false;
+
+        Debug.Log("Player is" + playerisFound);
+
     }
 
-    // временно не используется
+    // детектирование через рэйкаст, временно не используется
     void DetectPlayer() {
       Vector2 lookDirection = new Vector2(target.position.x, target.position.y) - new Vector2(transform.position.x, transform.position.y);
 
@@ -49,7 +52,7 @@ public class PlayerDetector : MonoBehaviour
       //    Debug.Log("Player info null");
         }*/
 
-      /*if(PlayerInfo.collider != null){
+      if(PlayerInfo.collider != null){
 
         Debug.DrawRay(playerDetect.position, lookDirection * rayLenght, Color.red);
 
@@ -62,8 +65,11 @@ public class PlayerDetector : MonoBehaviour
         }
       else
         playerisFound = false;
-        */
+
     }
+
+
+
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -71,7 +77,7 @@ public class PlayerDetector : MonoBehaviour
         playerisFound = true;
       }
 
-      if(other.gameObject.tag == "Enemy"){
+      if(other.gameObject.tag == "Enemy" && other.gameObject != gameObject ){
         thereIsEnemyOnTheWay = true;
       }
 
