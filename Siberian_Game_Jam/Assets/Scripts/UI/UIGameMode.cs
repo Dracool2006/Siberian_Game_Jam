@@ -19,6 +19,10 @@ public class UIGameMode : MonoBehaviour
     public int shootGunSoulsDemand = 35;
     public int healSoulsDemand = 40;
 
+    public Slider SoulSlider;
+    public Slider HealSlider;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,7 @@ public class UIGameMode : MonoBehaviour
 
     public void ShowSoulLevel(int val)
     {
+
         SoulText.text = val.ToString();
         SoulScale.transform.position = new Vector3(0, -val, 0);
         ShowMagik(val);
@@ -45,7 +50,24 @@ public class UIGameMode : MonoBehaviour
 
     public void ShowHealPointLevel(int val)
     {
+
         HealPointScale.transform.position = new Vector3(0, -val * 3.5f, 0);
+    }
+
+    public void SetSoulSlider(int val)
+    {
+
+      SoulText.text = val.ToString();
+      SoulSlider.value = ((float)val)/100;
+      //HealPointScale.transform.position = new Vector3(0, -val * 3.5f, 0);
+      ShowMagik(val);
+
+    }
+    public void SetHealSlider(int val)
+    {
+      
+        HealSlider.value = ((float)val)/100;
+        //HealPointScale.transform.position = new Vector3(0, -val * 3.5f, 0);
     }
 
     public void ShowMagik(int val)

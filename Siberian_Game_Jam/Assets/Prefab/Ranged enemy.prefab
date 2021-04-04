@@ -656,6 +656,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5191440435245403463, guid: eb3e998e25adec04fb7c830ea8559853, type: 3}
+      propertyPath: AudioShoot
+      value: 
+      objectReference: {fileID: 1396773949474313065, guid: ac70fed51bf2b09438abb24e94c8c410, type: 3}
+    - target: {fileID: 5191440435245403463, guid: eb3e998e25adec04fb7c830ea8559853, type: 3}
       propertyPath: MaxBulletsInMagazine
       value: 6
       objectReference: {fileID: 0}
