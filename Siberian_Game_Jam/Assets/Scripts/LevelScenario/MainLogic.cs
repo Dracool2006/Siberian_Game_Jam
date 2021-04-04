@@ -10,6 +10,7 @@ public class MainLogic : MonoBehaviour
     private int ProgressLevel = 0;
     public int EnemyKill = 0;
     public GameObject Rain;
+    public GameObject Water;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class MainLogic : MonoBehaviour
     {
         ProgressLevel = progress;
         Rain.GetComponent<Rain>().SetRain(ProgressLevel);
+        Water.GetComponent<Water>().SetProgress(ProgressLevel);
     }
 
     public void EnemyDead()
