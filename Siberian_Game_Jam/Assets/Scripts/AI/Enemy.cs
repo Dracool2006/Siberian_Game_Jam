@@ -51,7 +51,11 @@ public class Enemy : PawnBase
       // проверяем, что ИИ не мертв
       if(state != States.dead && state != States.passive)
       {
-        SetAnimatorKeys();
+
+          SetAnimatorKeys();
+
+
+
         rangedWeaponRotation();
 
       //  Debug.Log($" isAttackCooldown {isAttackCooldown}");
@@ -119,6 +123,11 @@ public class Enemy : PawnBase
 
       Vector2 lookDirection = GetLookAtDirection();
 
+
+    //if (enemyType == EnemyTypes.ranged)
+    //  if (state != States.attackig){
+
+
       if(lookDirection.normalized.y < 0.5f && lookDirection.normalized.y > -0.5f)
       {
 
@@ -129,7 +138,8 @@ public class Enemy : PawnBase
           enemyAnimator.SetBool("MoveLeft", true);
           enemyAnimator.SetBool("MoveTop", false);
           enemyAnimator.SetBool("MoveBack", false);
-          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        //  enemyAnimator.SetBool("Idle", false);
+          transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
         else if (lookDirection.normalized.x > 0.5f)
         {
@@ -137,7 +147,8 @@ public class Enemy : PawnBase
           enemyAnimator.SetBool("MoveLeft", false);
           enemyAnimator.SetBool("MoveTop", false);
           enemyAnimator.SetBool("MoveBack", false);
-          transform.localScale = new Vector3(1.0f, transform.localScale.y, transform.localScale.y);
+        //  enemyAnimator.SetBool("Idle", false);
+          transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
       }
       else
@@ -148,7 +159,8 @@ public class Enemy : PawnBase
           enemyAnimator.SetBool("MoveLeft", false);
           enemyAnimator.SetBool("MoveRight", false);
           enemyAnimator.SetBool("MoveTop", false);
-          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        //  enemyAnimator.SetBool("Idle", false);
+          transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
         else if(lookDirection.normalized.y < -0.5f)
         {
@@ -156,89 +168,21 @@ public class Enemy : PawnBase
           enemyAnimator.SetBool("MoveLeft", false);
           enemyAnimator.SetBool("MoveTop", true);
           enemyAnimator.SetBool("MoveBack", false);
-          transform.localScale = new Vector3(-1.0f, transform.localScale.y, transform.localScale.y);
+        //  enemyAnimator.SetBool("Idle", false);
+          transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
         }
       }
-
+    
+  /*  else
+    {
+      enemyAnimator.SetBool("MoveRight", false);
+      enemyAnimator.SetBool("MoveLeft", false);
+      enemyAnimator.SetBool("MoveTop", false);
+      enemyAnimator.SetBool("MoveBack", false);
+      enemyAnimator.SetBool("Idle", true);
+    }*/
     }
 
-/*
-    // метод, отвечающий за логику поворота врагов
-    public void Rotation (){
-
-      if (rb.velocity.x < 0.1f && rb.velocity.y < 0.1f && rb.velocity.x > -0.1f && rb.velocity.y > -0.1f)
-      {
-        anim.SetBool("MoveRight", false);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveDown", false);
-      }
-        //двигаемся вправо
-      if (rb.velocity.x > 0.1f && rb.velocity.y < 0.5f && rb.velocity.y > -0.5 )
-      {
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveDown", false);
-        bodySprite.localScale = new Vector3(3f,3f,3f);
-        //Debug.Log("Enemy Move right");
-      }
-      // движение влево
-      else if(rb.velocity.x < -0.1f && rb.velocity.y < 0.5f && rb.velocity.y > -0.5 ){
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveDown", false);
-        bodySprite.localScale = new Vector3(-3f,3f,3f);
-        //Debug.Log("Enemy Move left");
-      }
-      // движение вверх
-      else if (rb.velocity.y > 0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
-      {
-        anim.SetBool("MoveUp", true);
-        anim.SetBool("MoveRight", false);
-        anim.SetBool("MoveDown", false);
-        //  Debug.Log("Enemy Move up");
-      }
-      // движение вниз
-      else if (rb.velocity.y < -0.1f && rb.velocity.x < 0.5f && rb.velocity.x > -0.5 )
-      {
-        anim.SetBool("MoveDown", true);
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveRight", false);
-        //  Debug.Log("Enemy Move down");
-      }
-      // движение влево вверх
-      else if (rb.velocity.x < -0.5f && rb.velocity.y > 0.5f)
-      {
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveDown", false);
-      //  Debug.Log("Enemy Move left up");
-      }
-      // движение вправо вверх
-      else if (rb.velocity.x > 0.5f && rb.velocity.y > 0.5f)
-      {
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveDown", false);
-      //  Debug.Log("Enemy Move right up");
-      }
-      // движение влево вниз
-      else if (rb.velocity.x < -0.5f && rb.velocity.y < -0.5f)
-      {
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveUp", false);
-        anim.SetBool("MoveDown", false);
-      //  Debug.Log("Enemy Move left down");
-      }
-      // движение вправо вниз
-      else if (rb.velocity.x > 0.5f && rb.velocity.y < -0.5f)
-      {
-        anim.SetBool("MoveRight", true);
-        anim.SetBool("MoveDown", false);
-        anim.SetBool("MoveDown", false);
-      //  Debug.Log("Enemy Move right down");
-      }
-    }
-*/
 
     public virtual void AttackStart(){
 
