@@ -80,14 +80,15 @@ public class PuppeteerEnemys : MonoBehaviour
         int[] dataValid = new int[5];
         foreach (int[] dataSpawn in ProgressSpawn)
         {
-            if(dataSpawn[0] >= progress)
+            if(dataSpawn[0] <= progress)
             {
                 dataValid = dataSpawn;
             }
         }
 
         //spawn enemy
-        if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
+        //if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
+        if (true)
         {
             GameObject NewEnemy;
             //spawn melee

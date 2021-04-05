@@ -76,7 +76,7 @@ public class PawnBase : MonoBehaviour
     {
         if(Soul < LimitSoul)
         {
-            Soul++;
+            Soul+=5;
             return true;
         }
         else

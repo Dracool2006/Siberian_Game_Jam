@@ -28,15 +28,10 @@ public class PuppeteerSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dTime = Time.deltaTime;
-
-        if(SpawnTimer > 0)
+        SpawnTimer -= Time.deltaTime;
+        if (SpawnTimer < 0)
         {
-            SpawnTimer -= dTime;
-        }
-        else
-        {
-            SpawnTimer = DeltaRespawn;
+            SpawnTimer = DeltaRespawn - ProgressLevel/100;
             int spawnNumber = Mathf.FloorToInt(UnityEngine.Random.Range(0, AllSpawn.Count));
             AllEnemys.GetComponent<PuppeteerEnemys>().SpawnEnemy(ProgressLevel, AllSpawn[spawnNumber].position);
         }
