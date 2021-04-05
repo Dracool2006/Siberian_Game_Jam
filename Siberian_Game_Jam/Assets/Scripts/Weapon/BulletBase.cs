@@ -20,7 +20,8 @@ public class BulletBase : MonoBehaviour
       trajectory.x += Random.Range(-spreading, spreading);
       trajectory.y += Random.Range(-spreading, spreading);
       rb.AddForce(trajectory * speed, ForceMode2D.Impulse);
-
+      //rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+      print (transform.rotation);
   }
 
   void OnTriggerEnter2D(Collider2D other)

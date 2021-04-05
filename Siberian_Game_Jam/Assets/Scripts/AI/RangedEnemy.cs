@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+
+  public float waitTimeBeforeShoot = 1f;
     // Start is called before the first frame update
     /*void Start()
     {
@@ -18,10 +20,11 @@ public class RangedEnemy : Enemy
 
 
     public override void AttackStart(){
-        //anim.SetBool("Attack", true);
-      //  Debug.Log("EnemyAttack");
+    //  anim.SetBool("Attack", true);
+    //  Debug.Log("EnemyAttack");
         state = States.attackig;
-        EquippedWeapon.GetComponent<Gun>().Shoot();
+        StartCoroutine(WaitToAttack(waitTimeBeforeShoot));
+
         //StartCoroutine(AttackCooldown(attackCooldownTime));
     }
 
@@ -30,4 +33,13 @@ public class RangedEnemy : Enemy
         state = States.lookingfor;
         //EquippedWeapon.SetAttackColliderActive(true);
     }
+
+    IEnumerator WaitToAttack(float waitTime)
+    {
+      yield return new WaitForSeconds(waitTime);
+      EquippedWeapon.GetComponent<Gun>().Shoot();
+
+    }
+
+
 }

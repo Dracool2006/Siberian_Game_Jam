@@ -130,6 +130,9 @@ MonoBehaviour:
   healSoulsDemand: 40
   healCount: 5
   healTime: 10
+  gameMenu: {fileID: 0}
+  MainLogic: {fileID: 0}
+  AudioSoul: {fileID: 0}
 --- !u!114 &777230721881523968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equippedweapon: {fileID: 777230722537622630}
+  MActive1: {fileID: 0}
+  MActive2: {fileID: 0}
+  MActive3: {fileID: 0}
 --- !u!95 &4099283036120572213
 Animator:
   serializedVersion: 3
@@ -352,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4281042154943223874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 777230721881523974}

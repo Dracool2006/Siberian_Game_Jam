@@ -17,7 +17,7 @@ public class Enemy : PawnBase
 
     private Transform target;
     private Transform bodySprite;
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
     protected bool isAttackCooldown = false;
 
 
@@ -45,16 +45,12 @@ public class Enemy : PawnBase
     public virtual void Update()
     {
 
-
-
       transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
       // проверяем, что ИИ не мертв
       if(state != States.dead && state != States.passive)
       {
 
-          SetAnimatorKeys();
-
-
+        SetAnimatorKeys();
 
         rangedWeaponRotation();
 
@@ -62,7 +58,7 @@ public class Enemy : PawnBase
         //Debug.Log($" can we shoot {playerDetector.GetCanWeShoot()}");
         //Debug.Log($" isAttackCooldown {isAttackCooldown}");
         //Debug.Log($" summt {!isAttackCooldown && playerDetector.GetCanWeShoot()}");
-        // проверяем, что сейчас не кулдаун атаки и игрок в зоне досягаемсоти
+
         if(!isAttackCooldown && playerDetector.GetCanWeShoot() && !GetIsDead())
         {
           //Debug.Log("EnemyAttack");
@@ -70,11 +66,14 @@ public class Enemy : PawnBase
           AttackStart();
           //Debug.Log("EnemyAttack");
         }
+
         else if(!isAttackCooldown && !playerDetector.GetCanWeShoot())
         {
           AttackEnd();
         }
       }
+
+
     }
 
     public override void Movement(Vector2 direction, float speed)
@@ -108,18 +107,18 @@ public class Enemy : PawnBase
     public override void Death()
     {
         AudioDead.Play();
+        state = States.dead;
         //Debug.Log("Enemy Death");
-        enemyAnimator.SetTrigger("Death");
+        enemyAnimator.SetBool("Death", true);
         gameObject.GetComponent<Collider2D> ().enabled = false;
         rb.bodyType = RigidbodyType2D.Static;
         SetIsDead (true);
-        state = States.dead;
         StartCoroutine(Disappear(3.0f));
         SoulGenerate();
         GameObject.FindWithTag("MainCamera").GetComponent<MainLogic>().EnemyDead();
     }
 
-    void SoulGenerate()
+    protected void SoulGenerate()
     {
         GameObject soul = Instantiate(PrefabSoul);
         soul.transform.position = transform.position;
@@ -127,12 +126,17 @@ public class Enemy : PawnBase
 
     void SetAnimatorKeys(){
 
+      if(state == States.passive)
+      {
+        enemyAnimator.SetBool("MoveRight", false);
+        enemyAnimator.SetBool("MoveLeft", false);
+        enemyAnimator.SetBool("MoveTop", false);
+        enemyAnimator.SetBool("MoveBack", false);
+        enemyAnimator.SetBool("Idle", true);
+      }
+      else
+      {
       Vector2 lookDirection = GetLookAtDirection();
-
-
-    //if (enemyType == EnemyTypes.ranged)
-    //  if (state != States.attackig){
-
 
       if(lookDirection.normalized.y < 0.5f && lookDirection.normalized.y > -0.5f)
       {
@@ -188,6 +192,7 @@ public class Enemy : PawnBase
       enemyAnimator.SetBool("Idle", true);
     }*/
     }
+  }
 
 
     public virtual void AttackStart(){
@@ -201,7 +206,8 @@ public class Enemy : PawnBase
     // петод разворачивающий оружие в сторону игрока
     void rangedWeaponRotation()
     {
-      if(target != null){
+
+      if(target != null && !GetIsDead()){
         //Debug.Log("rangedWeaponRotation");
         Vector2 lookDirection = GetLookAtDirection();
         float angle = Mathf.Atan2(lookDirection.y,lookDirection.x) * Mathf.Rad2Deg - 90f;

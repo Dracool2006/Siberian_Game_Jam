@@ -21,7 +21,7 @@ public class MeleeWeapon : MonoBehaviour
     public void SetActiveCollider(bool value){
 
       damageCollision.enabled = value;
-      Debug.Log($"AttackCollider is {value}");
+    //  Debug.Log($"AttackCollider is {value}");
 
     }
 
@@ -30,7 +30,7 @@ public class MeleeWeapon : MonoBehaviour
     {
 
       if(other.gameObject.tag == "Player"){
-        Debug.Log("EnemyDamage");
+      //  Debug.Log("EnemyDamage");
 
             if (other.gameObject.GetComponent<Player> () != null)
             {

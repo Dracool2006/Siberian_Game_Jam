@@ -7,16 +7,7 @@ public class MeleeEnemy : Enemy
 
 
 
-    // Start is called before the first frame update
-  /*  void Start()
-    {
-    }*/
 
-    // Update is called once per frame
-    /*void Update()
-    {
-
-    }*/
 
 
     public override void AttackStart(){
@@ -41,5 +32,22 @@ public class MeleeEnemy : Enemy
       else
         EquippedWeapon.GetComponent<MeleeWeapon> ().SetActiveCollider(false);
     }
+
+    public override void Death()
+    {
+
+        MeleeWeaponActivateCollider (0);
+        state = States.dead;
+        enemyAnimator.SetBool("Death", true);
+        AudioDead.Play();
+        //Debug.Log("Enemy Death");
+        gameObject.GetComponent<Collider2D> ().enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
+        SetIsDead (true);
+        StartCoroutine(Disappear(3.0f));
+        SoulGenerate();
+        GameObject.FindWithTag("MainCamera").GetComponent<MainLogic>().EnemyDead();
+    }
+
 
 }

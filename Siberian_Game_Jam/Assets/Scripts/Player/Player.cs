@@ -13,7 +13,7 @@ public class Player : PawnBase
     public int shootGunSoulsDemand = 35;
     public int healSoulsDemand = 40;
     public int healCount = 5;
-    public float healTime = 10f;
+    public int healTime = 10;
     public GameMenu gameMenu;
     //private variables
     private Rigidbody2D rb;
