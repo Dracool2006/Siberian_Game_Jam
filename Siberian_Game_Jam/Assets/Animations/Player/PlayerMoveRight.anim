@@ -131,8 +131,8 @@ AnimationClip:
     classID: 212
     script: {fileID: 0}
   - curve:
-    - time: 2
-      value: {fileID: 21300000, guid: 4af7909088fefab418a07854a76e912d, type: 3}
+    - time: 0
+      value: {fileID: 1081723050936720847, guid: 7e221c3d0fd403a4eafdd638364f6a7f, type: 3}
     attribute: m_Sprite
     path: Sprite/Hand
     classID: 212
@@ -219,7 +219,7 @@ AnimationClip:
     - {fileID: -5333796950648897975, guid: 2641092caaeba31478737bdeb9e016d0, type: 3}
     - {fileID: -1027067415220953818, guid: 2641092caaeba31478737bdeb9e016d0, type: 3}
     - {fileID: -6359490856962265001, guid: 2641092caaeba31478737bdeb9e016d0, type: 3}
-    - {fileID: 21300000, guid: 4af7909088fefab418a07854a76e912d, type: 3}
+    - {fileID: 1081723050936720847, guid: 7e221c3d0fd403a4eafdd638364f6a7f, type: 3}
     - {fileID: 21300000, guid: 7873bfa424b954140ad85b97fa0e6a34, type: 3}
     - {fileID: 21300000, guid: 7873bfa424b954140ad85b97fa0e6a34, type: 3}
   m_AnimationClipSettings:

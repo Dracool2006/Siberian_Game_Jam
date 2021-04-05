@@ -13,7 +13,7 @@ public class Player : PawnBase
     public int shootGunSoulsDemand = 35;
     public int healSoulsDemand = 40;
     public int healCount = 5;
-    public float healTime = 50;
+    public int healTime = 50;
     public GameMenu gameMenu;
     //private variables
     private Rigidbody2D rb;
@@ -147,7 +147,7 @@ public class Player : PawnBase
     public override void ChangeHP(int deltaHP)
     {
 
-
+      //print(deltaHP);
         if (deltaHP < 0)
         {
             playerAnimator.SetTrigger("Damage");

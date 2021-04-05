@@ -58,6 +58,7 @@ public class PlayerDetector : MonoBehaviour
 
         if(PlayerInfo.collider.gameObject.tag == "Player" )
         {
+
             playerisFound = true;
         }
         else
@@ -75,6 +76,7 @@ public class PlayerDetector : MonoBehaviour
     {
       if(other.gameObject.tag == "Player"){
         playerisFound = true;
+
       }
 
       if(other.gameObject.tag == "Enemy" && other.gameObject != gameObject ){

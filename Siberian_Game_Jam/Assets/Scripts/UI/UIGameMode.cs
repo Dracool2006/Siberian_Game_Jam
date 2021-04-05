@@ -40,10 +40,39 @@ public class UIGameMode : MonoBehaviour
       HealSlider.value = (float) value /100;
     }
 
-    public void SetSoulSlider(int value){
+    public void SetSoulSlider(int val){
 
-      SoulSlider.value = (float) value /100;
-      SoulText.text = value.ToString();
+      SoulSlider.value = (float) val /100;
+      SoulText.text = val.ToString();
+
+      if (machineGunSoulsDemand < val)
+      {
+          M1Img.color = new Color(1, 1, 1);
+      }
+      else
+      {
+          M1Img.color = new Color(0, 0, 0);
+      }
+
+      if (healSoulsDemand < val)
+      {
+          M2Img.color = new Color(1, 1, 1);
+      }
+      else
+      {
+          M2Img.color = new Color(0, 0, 0);
+      }
+
+      if (shootGunSoulsDemand < val)
+      {
+          M3Img.color = new Color(1, 1, 1);
+      }
+      else
+      {
+          M3Img.color = new Color(0, 0, 0);
+      }
+
+
     }
 
     public void ShowBullet(int bullet, int maxBullet)

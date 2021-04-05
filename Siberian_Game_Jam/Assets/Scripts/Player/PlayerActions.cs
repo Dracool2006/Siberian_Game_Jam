@@ -66,11 +66,11 @@ public class PlayerActions : MonoBehaviour
       {
         if(player.GetSoul() > player.healSoulsDemand)
         {
-          HealPlayer(player.healTime);
+          StartCoroutine(HealPlayer(player.healTime));
 
           player.SetSouls(player.GetSoul() - player.healSoulsDemand);
           player.RescaleSoul();
-                MActive2.Play();
+          MActive2.Play();
         }
 
       }
@@ -89,11 +89,16 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    IEnumerator HealPlayer(float waitTime)
+    IEnumerator HealPlayer(int waitTime)
     {
+      Debug.Log("HealPlayer");
+      for (int i = 0; i < waitTime; i++)
+      {
+        player.ChangeHP(player.healCount);
+        Debug.Log(player.GetCurrentHP());
+        yield return new WaitForSeconds(1);
+      }
 
-      yield return new WaitForSeconds(waitTime);
-      player.ChangeHP(player.healCount);
 
   }
 
