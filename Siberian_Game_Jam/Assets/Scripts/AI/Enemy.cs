@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : PawnBase
 {
 
-    public int damage = -1; // значние отрицательно т.к. метод, который считает HP добавляет отрицательное значение и уменьшает так хп
+    //public int damage = -1; // значние отрицательно т.к. метод, который считает HP добавляет отрицательное значение и уменьшает так хп
     public float attackCooldownTime = 2.0f;
     public GameObject EquippedWeapon;
     public Transform WeaponSokect;

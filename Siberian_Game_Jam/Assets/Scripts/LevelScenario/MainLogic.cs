@@ -10,7 +10,7 @@ public class MainLogic : MonoBehaviour
     public GameObject AllEnemy;
     public GameObject Player;
     public int ProgressLevel = 0;
-    public int SoulsEequiredToWin = 500;
+    public int SoulsRequiredToWin = 500;
     public int EnemyKill = 0;
     public GameObject Rain;
     public GameObject Water;
@@ -60,13 +60,13 @@ public class MainLogic : MonoBehaviour
     {
         Rain.GetComponent<Rain>().SetRain(ProgressLevel);
         Water.GetComponent<Water>().SetProgress(ProgressLevel);
-        TextPrigress.text = (SoulsEequiredToWin - ProgressLevel).ToString();
+        TextPrigress.text = (SoulsRequiredToWin - ProgressLevel).ToString();
         AllSpawn.GetComponent<PuppeteerSpawn>().SetProgress(ProgressLevel);
     }
 
     public void AddSoul()
     {
-        if(ProgressLevel < SoulsEequiredToWin)
+        if(ProgressLevel < SoulsRequiredToWin)
         {
             if(!AudioSoul.isPlaying)
                 AudioSoul.Play();

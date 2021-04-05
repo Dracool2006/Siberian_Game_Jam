@@ -338,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &64919587
 Transform:
   m_ObjectHideFlags: 0
@@ -1764,6 +1764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ranged enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6721302636804602617, guid: 04d422b2df74191498735885ea833af7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6721302636804602620, guid: 04d422b2df74191498735885ea833af7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2342,7 +2346,7 @@ SpriteRenderer:
   m_Size: {x: 38.399998, y: 21.599998}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &978422505
@@ -2397,6 +2401,14 @@ MonoBehaviour:
   SoulText: {fileID: 1929027521}
   HealPointScale: {fileID: 1292106623}
   BulletText: {fileID: 798456721}
+  M1Img: {fileID: 0}
+  M2Img: {fileID: 0}
+  M3Img: {fileID: 0}
+  machineGunSoulsDemand: 25
+  shootGunSoulsDemand: 35
+  healSoulsDemand: 40
+  SoulSlider: {fileID: 0}
+  HealSlider: {fileID: 0}
 --- !u!114 &1036634471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2493,6 +2505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelOptions: {fileID: 1076720635}
+  PanelPosthumous: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!1 &1076720635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3261,7 +3275,18 @@ MonoBehaviour:
   AllSpawn: {fileID: 64919586}
   AllEnemy: {fileID: 1613048405}
   Player: {fileID: 872094628}
+  ProgressLevel: 0
+  SoulsRequiredToWin: 500
   EnemyKill: 0
+  Rain: {fileID: 0}
+  Water: {fileID: 0}
+  TextPrigress: {fileID: 0}
+  AudioSoul: {fileID: 0}
+  AudioMelody2: {fileID: 0}
+  AudioMelodyMain: {fileID: 0}
+  Flash: {fileID: 0}
+  AudioFlash: {fileID: 0}
+  Pawns: {fileID: 0}
 --- !u!1 &1292106623
 GameObject:
   m_ObjectHideFlags: 0

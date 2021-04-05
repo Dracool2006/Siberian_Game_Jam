@@ -147,7 +147,7 @@ public class Player : PawnBase
     public override void ChangeHP(int deltaHP)
     {
 
-
+      //print(deltaHP);
         if (deltaHP < 0)
         {
             playerAnimator.SetTrigger("Damage");
