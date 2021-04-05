@@ -12170,6 +12170,7 @@ MonoBehaviour:
   AllEnemy: {fileID: 1613048405}
   Player: {fileID: 872094628}
   ProgressLevel: 0
+  SoulsEequiredToWin: 300
   EnemyKill: 0
   Rain: {fileID: 1540016543}
   Water: {fileID: 1263430908}

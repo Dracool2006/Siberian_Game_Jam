@@ -29,11 +29,14 @@ public class BulletBase : MonoBehaviour
 
       if (other.gameObject.tag == "Enemy" && !isThisEnemybullet)
       {
-          Destroy(gameObject);
+
           if (other.gameObject.GetComponent<Enemy>() != null)
           {
-            if(other.gameObject.GetComponent<Enemy> ().state != States.dead)
+            if(other.gameObject.GetComponent<Enemy> ().state != States.dead && !other.gameObject.GetComponent<Enemy> ().GetIsDead())
+            {
               other.gameObject.GetComponent<Enemy>().ChangeHP(damage);
+              Destroy(gameObject);
+            }
           }
       }
 

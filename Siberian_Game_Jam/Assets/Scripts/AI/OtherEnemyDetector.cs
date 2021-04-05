@@ -21,7 +21,8 @@ public class OtherEnemyDetector : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-      if(other.gameObject.tag == "Enemy" && other.gameObject != gameObject){
+      if(other.gameObject.tag == "Enemy" && other.gameObject != gameObject ){
+        if(!other.gameObject.GetComponent<Enemy> ().GetIsDead())
           canWeMove = false;
       }
 
