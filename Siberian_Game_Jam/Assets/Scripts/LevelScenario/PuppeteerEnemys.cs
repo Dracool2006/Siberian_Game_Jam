@@ -7,7 +7,7 @@ public class PuppeteerEnemys : MonoBehaviour
 
     public GameObject PrefabEnemyMelee;
     public GameObject PrefabEnemyRange;
-    public int[][] ProgressSpawn = new int[4][]; //[прогресс игры, общая вероятность спавна, вероятность спавна милишника, вероятность спавна ренжевика, максимум на карте]
+    public int[][] ProgressSpawn = new int[4][]; //[прогресс игры, вероятность спавна группы, вероятность спавна милишника, вероятность спавна ренжевика, максимум на карте]
 
     private List<Transform> AllEnemys = new List<Transform>();
     private StatusGame GameMode = StatusGame.WaitingFirstAttack;
@@ -21,39 +21,45 @@ public class PuppeteerEnemys : MonoBehaviour
         ProgressSpawn[3] = new int[5];
 
         ProgressSpawn[0][0] = 0;
-        ProgressSpawn[0][1] = 80;
-        ProgressSpawn[0][2] = 90;
-        ProgressSpawn[0][3] = 10;
+        ProgressSpawn[0][1] = 50;
+        ProgressSpawn[0][2] = 100;
+        ProgressSpawn[0][3] = 0;
         ProgressSpawn[0][4] = 10;
 
-        ProgressSpawn[1][0] = 50;
-        ProgressSpawn[1][1] = 90;
-        ProgressSpawn[1][2] = 80;
-        ProgressSpawn[1][3] = 20;
+        ProgressSpawn[1][0] = 100;
+        ProgressSpawn[1][1] = 30;
+        ProgressSpawn[1][2] = 90;
+        ProgressSpawn[1][3] = 10;
         ProgressSpawn[1][4] = 20;
 
-        ProgressSpawn[2][0] = 100;
-        ProgressSpawn[2][1] = 100;
+        ProgressSpawn[2][0] = 200;
+        ProgressSpawn[2][1] = 20;
         ProgressSpawn[2][2] = 70;
         ProgressSpawn[2][3] = 30;
         ProgressSpawn[2][4] = 30;
 
-        ProgressSpawn[3][0] = 150;
-        ProgressSpawn[3][1] = 100;
+        ProgressSpawn[3][0] = 300;
+        ProgressSpawn[3][1] = 20;
         ProgressSpawn[3][2] = 50;
         ProgressSpawn[3][3] = 50;
         ProgressSpawn[3][4] = 50;
 
-        foreach (Transform child in GetComponentInChildren<Transform>())
-        {
-            AllEnemys.Add(child);
-        }
+        GetEnemyCount();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void GetEnemyCount()
+    {
+        AllEnemys.Clear();
+        foreach (Transform child in GetComponentInChildren<Transform>())
+        {
+            AllEnemys.Add(child);
+        }
     }
 
     public void FirstAttack()
@@ -75,7 +81,7 @@ public class PuppeteerEnemys : MonoBehaviour
         }
     }
 
-    public bool SpawnEnemy(int progress, Vector3 spawn)
+    public bool SpawnEnemy(int progress, Vector3 spawn, SpawnTypes spawnType)
     {
         int[] dataValid = new int[5];
         foreach (int[] dataSpawn in ProgressSpawn)
@@ -86,25 +92,31 @@ public class PuppeteerEnemys : MonoBehaviour
             }
         }
 
-        //spawn enemy
-        //if (UnityEngine.Random.Range(0, 100) <= dataValid[1] && dataValid[4] > AllEnemys.Count)
-        if (true)
+        GetEnemyCount();
+        if (dataValid[4] > AllEnemys.Count)
         {
-            GameObject NewEnemy;
-            //spawn melee
-            if (UnityEngine.Random.Range(0, 100) <= dataValid[2])
-            {
-                NewEnemy = Instantiate(PrefabEnemyMelee);
-            }
-            //spawn range
-            else
-            {
-                NewEnemy = Instantiate(PrefabEnemyRange);
-            }
+            int enemyRandomazer = UnityEngine.Random.Range(0, 100);
+            int enemyMaximum = UnityEngine.Random.Range(2, 7);
+            int enemyGroup = (dataValid[1] > enemyRandomazer && spawnType == SpawnTypes.street) ? enemyMaximum : 1;
 
-            NewEnemy.transform.position = spawn;
+            for (int i = 0; i < enemyGroup; i++)
+            {
+                GameObject NewEnemy;
+                //spawn melee
+                if (UnityEngine.Random.Range(0, 100) <= dataValid[2])
+                {
+                    NewEnemy = Instantiate(PrefabEnemyMelee, transform);
+                }
+                //spawn range
+                else
+                {
+                    NewEnemy = Instantiate(PrefabEnemyRange, transform);
+                }
 
-            AllEnemys.Add(NewEnemy.transform);
+                NewEnemy.transform.position = spawn;
+
+                AllEnemys.Add(NewEnemy.transform);
+            }
 
             return true;
         }
