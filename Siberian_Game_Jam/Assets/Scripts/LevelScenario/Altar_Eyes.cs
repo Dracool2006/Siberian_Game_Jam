@@ -4,24 +4,46 @@ using UnityEngine;
 
 public class Altar_Eyes : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public bool player_in_col=false;
-    Color runeColor, ignitedColor;
-    //public Altar_Eyes ignite_eyes;
 
+    public float fade_level = 0.0f;
+    public bool souls_in_progress;
 
-    public void ignite_eyes ()
+    public IEnumerator ignite_eyes(bool soul_transfer)
+    //public void ignite_eyes(bool soul_transfer)
     {
-        //Debug.Log(player_in_col);
-        //if (player_in_col)
-        //{
-            runeColor = GetComponent<SpriteRenderer>().color;
-            ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, 255.000f);
-            GetComponent<SpriteRenderer>().color = ignitedColor;
-        //}
+        
+        //public float fade_level=0.0f;
+        Color runeColor, ignitedColor;
+        
+        float duration = 1.5f;
+        
+        if (soul_transfer)
+        {
+            souls_in_progress = true;
+            while (fade_level < 1.0f && souls_in_progress==true)
+            {
+                runeColor = GetComponent<SpriteRenderer>().color;
+                ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, fade_level);
+                fade_level += 0.001f;
+                GetComponent<SpriteRenderer>().color = ignitedColor;
+                yield return null;
+            }
+            yield break;
+        }
+        else
+        {
+            while (fade_level > 0.0f)
+            {
+                runeColor = GetComponent<SpriteRenderer>().color;
+                ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, fade_level);
+                GetComponent<SpriteRenderer>().color = ignitedColor;
+                fade_level -= 0.002f;
+                yield return null;
+            }
+        }
     }
 
-    public void fade_eyes()
+    /*public void fade_eyes()
     {
         //Debug.Log(player_in_col);
         //if (player_in_col)
@@ -30,11 +52,18 @@ public class Altar_Eyes : MonoBehaviour
         ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, 0.000f);
         GetComponent<SpriteRenderer>().color = ignitedColor;
         //}
+    }*/
+
+    public void vizvano(bool is_soul_transfer)
+    {
+        //StopCoroutine(ignite_eyes(is_soul_transfer));
+        souls_in_progress = false;
+        StartCoroutine(ignite_eyes(is_soul_transfer));
     }
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

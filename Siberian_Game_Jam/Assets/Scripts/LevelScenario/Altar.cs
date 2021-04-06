@@ -19,44 +19,32 @@ public class Altar : MonoBehaviour
         
     }
 
-    Altar_Eyes sn;
+    Altar_Eyes Aeyes;
+    public bool souls_transfer;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
-        //Altar_Eyes eye_trigger, m_someOtherScriptOnAnotherGameObject;
-
-        Debug.Log("HIT DETECTED");
-
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.isTrigger)
         {
-
-            //m_someOtherScriptOnAnotherGameObject = GameObject.FindObjectOfType(typeof(Altar_Eyes));
-            //m_someOtherScriptOnAnotherGameObject.ignite_eyes();
-
-            //eye_trigger = GameObject.Find("Gods_Eyes").GetComponent(Altar_Eyes);
-            //eye_trigger.ignite_eyes();
-
-
-            sn = GameObject.FindGameObjectWithTag("Altar_Eyes").GetComponent<Altar_Eyes>();
-            Debug.Log(sn);
-            sn.ignite_eyes();
+            Aeyes = GameObject.FindGameObjectWithTag("Altar_Eyes").GetComponent<Altar_Eyes>();
+            Debug.Log("Player in Trigger Zone");
+            //sn.ignite_eyes(true);
+            souls_transfer = true;
+            Aeyes.vizvano(souls_transfer);
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
 
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && other.isTrigger)
         {
-            sn = GameObject.FindGameObjectWithTag("Altar_Eyes").GetComponent<Altar_Eyes>();
-            Debug.Log(sn);
-            sn.fade_eyes();
+            Aeyes = GameObject.FindGameObjectWithTag("Altar_Eyes").GetComponent<Altar_Eyes>();
+            Debug.Log("Player Exited");
+            souls_transfer = false;
+            //sn.ignite_eyes(false);
+            Aeyes.vizvano(souls_transfer);
         }
-
-
-        //Altar_Eyes sn = gameObject.GetComponent<Altar_Eyes>();
-        //sn.ignite_eyes();
 
     }
 
