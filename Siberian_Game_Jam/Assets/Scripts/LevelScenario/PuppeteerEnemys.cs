@@ -20,11 +20,11 @@ public class PuppeteerEnemys : MonoBehaviour
         ProgressSpawn[2] = new int[5];
         ProgressSpawn[3] = new int[5];
 
-        ProgressSpawn[0][0] = 0;
-        ProgressSpawn[0][1] = 50;
-        ProgressSpawn[0][2] = 100;
-        ProgressSpawn[0][3] = 0;
-        ProgressSpawn[0][4] = 10;
+        ProgressSpawn[0][0] = 0;        //прогресс игры
+        ProgressSpawn[0][1] = 50;       //вероятность спавна группы
+        ProgressSpawn[0][2] = 100;      //вероятность спавна милишника
+        ProgressSpawn[0][3] = 0;        //вероятность спавна ренжевика
+        ProgressSpawn[0][4] = 10;       //максимум на карте
 
         ProgressSpawn[1][0] = 100;
         ProgressSpawn[1][1] = 30;

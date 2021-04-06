@@ -56,6 +56,7 @@ public class Altar_Eyes : MonoBehaviour
 
     public void vizvano(bool is_soul_transfer)
     {
+        Debug.Log("ZHOPA");
         //StopCoroutine(ignite_eyes(is_soul_transfer));
         souls_in_progress = false;
         StartCoroutine(ignite_eyes(is_soul_transfer));
