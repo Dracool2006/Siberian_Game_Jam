@@ -33,7 +33,7 @@ public class PuppeteerSpawn : MonoBehaviour
         {
             SpawnTimer = DeltaRespawn - ProgressLevel/100;
             int spawnNumber = Mathf.FloorToInt(UnityEngine.Random.Range(0, AllSpawn.Count));
-            AllEnemys.GetComponent<PuppeteerEnemys>().SpawnEnemy(ProgressLevel, AllSpawn[spawnNumber].position);
+            AllEnemys.GetComponent<PuppeteerEnemys>().SpawnEnemy(ProgressLevel, AllSpawn[spawnNumber].position, AllSpawn[spawnNumber].GetComponent<SpawnPoint>().spawnType);
         }
 
 
