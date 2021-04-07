@@ -9,6 +9,7 @@ TagManager:
   - Spawn
   - Altar
   - Altar_Eyes
+  - PuppeterSpawner
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class PuppeteerSpawn : MonoBehaviour
     private List<Transform> AllSpawn = new List<Transform>();
     public GameObject AllEnemys;
     private float SpawnTimer = 10;
-    private int ProgressLevel = 0;
+    public int ProgressLevel = 0;
     public float DeltaRespawn = 5;
 
     // Start is called before the first frame update
