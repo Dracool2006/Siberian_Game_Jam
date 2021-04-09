@@ -24,6 +24,7 @@ public class Player : PawnBase
     public GameObject MainLogic;
 
     public AudioSource AudioSoul;
+    public AudioSource AudioDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,8 @@ public class Player : PawnBase
     // Update is called once per frame
     void Update()
     {
+
+      transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
         if(cam != null)
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -151,6 +154,7 @@ public class Player : PawnBase
         if (deltaHP < 0)
         {
             playerAnimator.SetTrigger("Damage");
+            AudioDamage.Play();
         }
         SetCurrentHP(GetCurrentHP() + deltaHP);
         RescaleHealPoint();

@@ -41,8 +41,9 @@ public class WeaponBase : MonoBehaviour
 
     }
 
-    public IEnumerator reloading(float waitTime)
+    public virtual IEnumerator reloading(float waitTime)
     {
+
         isReloading = true;
         yield return new WaitForSeconds(waitTime);
         currentBulletsInMagazine = MaxBulletsInMagazine;
