@@ -14,6 +14,8 @@ public class Gun : WeaponBase
     public MachinegunStats machinegunStats;
     public Animator muzzleFlashAnimator;
     public AudioSource AudioShoot;
+    public AudioSource AudioReload;
+    public Crosshair crosshair;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +51,10 @@ public class Gun : WeaponBase
             //если есть патроны
             if (currentBulletsInMagazine > 0 && bullet != null){
 
-                AudioShoot.Play();
+            if(crosshair != null)
+              crosshair.PlayShootingAnimate();
+
+            AudioShoot.Play();
 
             if (barrel == null)
                 barrel = (transform.Find ("Barrel")).transform;
@@ -57,22 +62,48 @@ public class Gun : WeaponBase
           // создаем проджектайл
             foreach (GameObject bullet in bullets )
             {
-
                 Instantiate (bullet, barrel.position, barrel.rotation);
             }
+
+
 
             muzzleFlashAnimator.SetTrigger("Shoot");
 
             currentBulletsInMagazine = currentBulletsInMagazine - 1;
             //запускаем кулдаун
             StartCoroutine(shootingCooldown(60/shootingSpeed));
-        }
-        //если патронов нет, то перезаряжаем
-        if (currentBulletsInMagazine <= 0 && !isReloading){
 
-            StartCoroutine(reloading(reloadingTime));
+            //если патронов нет, то перезаряжаем
+            if (currentBulletsInMagazine <= 0 && !isReloading){
+
+                StartCoroutine(reloading(reloadingTime));
+            }
+
         }
+
       }
+    }
+
+
+    public override IEnumerator reloading(float waitTime)
+    {
+      if(crosshair != null)
+      {
+        crosshair.PlayReloadingAnimate();
+        crosshair.ResetShootingAnimate();
+      }
+
+      if(AudioReload != null)
+        AudioReload.Play();
+
+      isReloading = true;
+      yield return new WaitForSeconds(waitTime);
+      currentBulletsInMagazine = MaxBulletsInMagazine;
+      isReloading = false;
+
+      if(crosshair != null)
+        crosshair.StopReloadingAnimate();
+
     }
 
     public IEnumerator AbilityTimer(float waitTime)
