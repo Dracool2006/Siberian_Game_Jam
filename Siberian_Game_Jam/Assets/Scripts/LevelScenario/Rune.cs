@@ -65,18 +65,18 @@ public class Rune : MonoBehaviour
 
         //Ignite_Altar_Rune
         //Progress = ProgressLevel;
-        if (Progress == 25)
+        if (Progress == 150)
         {
             runeColor = GameObject.Find("FX_Rune1").GetComponent<SpriteRenderer>().color;
             ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, 1.0f);
             GameObject.Find("FX_Rune1").GetComponent<SpriteRenderer>().color = ignitedColor;
         }
-        else if (Progress == 50){
+        else if (Progress == 300){
             runeColor = GameObject.Find("FX_Rune2").GetComponent<SpriteRenderer>().color;
             ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, 1.0f);
             GameObject.Find("FX_Rune2").GetComponent<SpriteRenderer>().color = ignitedColor;
         }
-        else if (Progress == 75){
+        else if (Progress == 450){
             runeColor = GameObject.Find("FX_Rune3").GetComponent<SpriteRenderer>().color;
             ignitedColor = new Color(runeColor.r, runeColor.g, runeColor.b, 1.0f);
             GameObject.Find("FX_Rune3").GetComponent<SpriteRenderer>().color = ignitedColor;
