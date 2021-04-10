@@ -45,11 +45,11 @@ public class Enemy : PawnBase
     public virtual void Update()
     {
 
-      transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
+
       // проверяем, что ИИ не мертв
       if(state != States.dead && state != States.passive)
       {
-
+        transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f);
         SetAnimatorKeys();
 
         rangedWeaponRotation();
@@ -106,9 +106,12 @@ public class Enemy : PawnBase
     // метод смерти
     public override void Death()
     {
+
         AudioDead.Play();
         state = States.dead;
-        //Debug.Log("Enemy Death");
+
+        transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f + 5.0f);
+
         enemyAnimator.SetBool("Death", true);
         gameObject.GetComponent<Collider2D> ().enabled = false;
         rb.bodyType = RigidbodyType2D.Static;

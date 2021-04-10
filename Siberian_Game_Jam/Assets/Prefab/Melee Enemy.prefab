@@ -513,7 +513,6 @@ MonoBehaviour:
   MaxHP: 100
   maxSpeed: 300
   LimitSoul: 100
-  damage: -1
   attackCooldownTime: 2
   EquippedWeapon: {fileID: 6134645552772937314}
   WeaponSokect: {fileID: 3871415938704153698}
@@ -622,8 +621,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2.6}
+  m_Offset: {x: 0, y: -0.06682432}
+  m_Size: {x: 1, y: 2.4663513}
   m_Direction: 0
 --- !u!1 &8810108401572335367
 GameObject:

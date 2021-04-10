@@ -7,11 +7,18 @@ public class MeleeEnemy : Enemy
 
 
 
-
-
-
     public override void AttackStart(){
-        enemyAnimator.SetTrigger("Attack");
+
+/*    хотел вторую анимацию добавить получше, но вышлдо так себе
+
+     if( Mathf.RoundToInt(Random.Range(0f,1f)) != 0)
+        enemyAnimator.SetTrigger("StabAttack");
+      else
+        enemyAnimator.SetTrigger("CutAttack");
+*/
+
+        enemyAnimator.SetTrigger("StabAttack");
+
         //Debug.Log("EnemyAttack");
         state = States.attackig;
         //EquippedWeapon.SetAttackColliderActive(true);
@@ -38,8 +45,10 @@ public class MeleeEnemy : Enemy
 
         MeleeWeaponActivateCollider (0);
         state = States.dead;
+        transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f + 5.0f);
         enemyAnimator.SetBool("Death", true);
-        AudioDead.Play();
+        if (AudioDead != null)
+          AudioDead.Play();
         //Debug.Log("Enemy Death");
         gameObject.GetComponent<Collider2D> ().enabled = false;
         rb.bodyType = RigidbodyType2D.Static;

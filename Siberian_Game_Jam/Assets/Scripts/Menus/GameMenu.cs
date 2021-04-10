@@ -9,12 +9,12 @@ public class GameMenu : MonoBehaviour
     public GameObject PanelOptions;
     public GameObject PanelPosthumous;
     public GameObject Inventory;
-
+    public GameObject Crosshair;
 
     // Start is called before the first frame update
     void Start()
     {
-
+      Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -72,6 +72,9 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 0;
         PanelPosthumous.SetActive(true);
         Inventory.SetActive(false);
+        Crosshair.SetActive(false);
+        Cursor.visible = true;
+
     }
 
     public void OnOptions()
@@ -80,6 +83,8 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 0;
         Inventory.SetActive(false);
         PanelOptions.SetActive(true);
+        Cursor.visible = true;
+        Crosshair.SetActive(false);
     }
 
 
@@ -88,5 +93,7 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 1;
         PanelOptions.SetActive(false);
         Inventory.SetActive(true);
+        Cursor.visible = false;
+        Crosshair.SetActive(true);
     }
 }
