@@ -37,7 +37,8 @@ public class MainLogic : MonoBehaviour
     void Update()
     {
         FlashTimer -= Time.deltaTime;
-        Flash.SetActive(false);
+        if(Flash)
+            Flash.SetActive(false);
         if (FlashTimer < 0)
         {
             FlashTimer = UnityEngine.Random.Range(5, 50);
@@ -45,7 +46,8 @@ public class MainLogic : MonoBehaviour
             {
                 AudioFlash.Play();
                 GetComponent<CameraMovement>().Shaking();
-                Flash.SetActive(true);
+                if (Flash)
+                    Flash.SetActive(true);
             }
         }
     }
@@ -58,10 +60,14 @@ public class MainLogic : MonoBehaviour
 
     void RefrashProgressLevel()
     {
+        if(Rain)
         Rain.GetComponent<Rain>().SetRain(ProgressLevel);
-        Water.GetComponent<Water>().SetProgress(ProgressLevel);
-        TextPrigress.text = (SoulsRequiredToWin - ProgressLevel).ToString();
-        AllSpawn.GetComponent<PuppeteerSpawn>().SetProgress(ProgressLevel);
+        if (Water)
+            Water.GetComponent<Water>().SetProgress(ProgressLevel);
+        if (Water)
+            TextPrigress.text = (SoulsRequiredToWin - ProgressLevel).ToString();
+        if (AllSpawn)
+            AllSpawn.GetComponent<PuppeteerSpawn>().SetProgress(ProgressLevel);
     }
 
     public void AddSoul()

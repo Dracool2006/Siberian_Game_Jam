@@ -6,14 +6,14 @@ public class Crosshair : MonoBehaviour
 {
 
     public Animator crosshairAnimator;
-    public Camera mainCamera;
+
     public float translationSpeed = 5;
     private float shootingAnimationsSpeed {get; set;}
 
     // Start is called before the first frame update
     void Start()
     {
-      mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+     
       crosshairAnimator = GetComponent<Animator>();
     }
 
@@ -30,9 +30,9 @@ public class Crosshair : MonoBehaviour
 
     public void SetCrosshairPosition()
     {
-      if(mainCamera != null)
+      if(Camera.main != null)
       {
-        transform.position = Vector3.MoveTowards( transform.position,new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,transform.position.z), translationSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards( transform.position,new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,transform.position.z), translationSpeed * Time.deltaTime);
         //transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,transform.position.z);
       }
 

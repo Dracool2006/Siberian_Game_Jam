@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : WeaponBase
@@ -13,8 +12,8 @@ public class Gun : WeaponBase
     public ShootgunStats shootgunStats;
     public MachinegunStats machinegunStats;
     public Animator muzzleFlashAnimator;
-    public AudioSource AudioShoot;
-    public AudioSource AudioReload;
+    public AudioClip AudioShoot;
+    public AudioClip AudioReload;
     public Crosshair crosshair;
 
     // Start is called before the first frame update
@@ -23,13 +22,6 @@ public class Gun : WeaponBase
       SetWeaponMode(1);
       weaponMode = RangeWeaponMode.pistol;
       muzzleFlashAnimator = GetComponent <Animator> ();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
     }
 
 
@@ -54,7 +46,11 @@ public class Gun : WeaponBase
             if(crosshair != null)
               crosshair.PlayShootingAnimate();
 
-            AudioShoot.Play();
+            if(AudioService.Instance)
+                {
+                    if(AudioShoot)
+                    AudioService.Instance.PlaySound(AudioShoot);
+                }
 
             if (barrel == null)
                 barrel = (transform.Find ("Barrel")).transform;
@@ -94,7 +90,11 @@ public class Gun : WeaponBase
       }
 
       if(AudioReload != null)
-        AudioReload.Play();
+        {
+            if (AudioService.Instance)
+                AudioService.Instance.PlaySound(AudioReload);
+        }
+
 
       isReloading = true;
       yield return new WaitForSeconds(waitTime);

@@ -51,7 +51,7 @@ TextureImporter:
       213: 4984640475262563321
     second: PlayerSprites_15
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -80,9 +81,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -110,6 +111,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -125,6 +127,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -484,6 +498,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      PlayerSprites_0: 600787656912180804
+      PlayerSprites_1: -6573777416417220690
+      PlayerSprites_10: 1226698290922342999
+      PlayerSprites_11: -2650982196621262989
+      PlayerSprites_12: 4906320411871050636
+      PlayerSprites_13: -3446259362212464047
+      PlayerSprites_14: 6911948736729229215
+      PlayerSprites_15: 4984640475262563321
+      PlayerSprites_2: 3561037995832689329
+      PlayerSprites_3: 5670999935819666744
+      PlayerSprites_4: -6556743904625465184
+      PlayerSprites_5: 7777069500747275281
+      PlayerSprites_6: -1907178489979809653
+      PlayerSprites_7: 5458758677676582336
+      PlayerSprites_8: 1650604073877677656
+      PlayerSprites_9: -1202370827357078574
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

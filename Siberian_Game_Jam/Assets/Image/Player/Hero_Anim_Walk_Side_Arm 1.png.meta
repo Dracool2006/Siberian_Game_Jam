@@ -30,7 +30,7 @@ TextureImporter:
       213: -4303854048938651801
     second: Hero_Anim_Walk_Side_Arm 1_8
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -51,6 +51,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -59,9 +60,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -89,6 +90,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -104,6 +106,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -316,6 +330,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Hero_Anim_Walk_Side_Arm 1_0: 1081723050936720847
+      Hero_Anim_Walk_Side_Arm 1_1: -1147763713429661666
+      Hero_Anim_Walk_Side_Arm 1_2: 1163258470425590011
+      Hero_Anim_Walk_Side_Arm 1_3: -8694855136714521304
+      Hero_Anim_Walk_Side_Arm 1_4: -4127377889010237888
+      Hero_Anim_Walk_Side_Arm 1_5: -2204540220413886910
+      Hero_Anim_Walk_Side_Arm 1_6: -1989640737639567272
+      Hero_Anim_Walk_Side_Arm 1_7: 4237907186223253402
+      Hero_Anim_Walk_Side_Arm 1_8: -4303854048938651801
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

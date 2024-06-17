@@ -47,8 +47,9 @@ public class MeleeEnemy : Enemy
         state = States.dead;
         transform.position = new Vector3 (transform.position.x,  transform.position.y, transform.position.y * 0.01f + 5.0f);
         enemyAnimator.SetBool("Death", true);
-        if (AudioDead != null)
-          AudioDead.Play();
+        if (AudioDead != null && AudioService.Instance)
+            AudioService.Instance.PlaySound(AudioDead);
+
         //Debug.Log("Enemy Death");
         gameObject.GetComponent<Collider2D> ().enabled = false;
         rb.bodyType = RigidbodyType2D.Static;
