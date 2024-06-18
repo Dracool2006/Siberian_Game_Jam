@@ -16,8 +16,8 @@ public class Enemy : PawnBase
     public OtherEnemyDetector otherEnemyDetector;
 
     private Transform target;
-    private Transform bodySprite;
-    protected Rigidbody2D rb;
+    [SerializeField] protected Transform bodySprite;
+    [SerializeField] protected Rigidbody2D rb;
     protected bool isAttackCooldown = false;
 
 
@@ -32,10 +32,10 @@ public class Enemy : PawnBase
         target = GameObject.FindWithTag("Player").transform;
         state = (state != States.passive) ? States.lookingfor : States.passive;
         rb = GetComponent<Rigidbody2D> ();
-        bodySprite = transform.Find("Body").transform;
         enemyAnimator = GetComponent <Animator> ();
-        //playerDetector = transform.Find("PlayerDetector").GetComponent<PlayerDetector>();
+
         target = GameObject.FindWithTag("Player").transform;
+
         if (enemyType == EnemyTypes.ranged)
           EquippedWeapon.GetComponent<Gun>().SetWeaponMode(1);
     }
@@ -135,7 +135,6 @@ public class Enemy : PawnBase
 
         if(state == States.passive)
         {
-
             enemyAnimator.SetBool("Idle", true);
         }
         else
@@ -173,61 +172,7 @@ public class Enemy : PawnBase
            
             enemyAnimator.SetFloat("Horizontal", normalizedLookDirection.x);
             enemyAnimator.SetFloat("Vertical", normalizedLookDirection.y);
-            /*
 
-            if (lookDirection.normalized.y < 0.5f && lookDirection.normalized.y > -0.5f)
-            {
-
-                if (lookDirection.normalized.x < - 0.5f)
-                {
-                    //Debug.Log("MoveLeft");
-                    enemyAnimator.SetBool("MoveRight", false);
-                    enemyAnimator.SetBool("MoveLeft", true);
-                    enemyAnimator.SetBool("MoveTop", false);
-                    enemyAnimator.SetBool("MoveBack", false);
-                //  enemyAnimator.SetBool("Idle", false);
-                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
-                }
-                else if (lookDirection.normalized.x > 0.5f)
-                {
-                    enemyAnimator.SetBool("MoveRight", true);
-                    enemyAnimator.SetBool("MoveLeft", false);
-                    enemyAnimator.SetBool("MoveTop", false);
-                    enemyAnimator.SetBool("MoveBack", false);
-                //  enemyAnimator.SetBool("Idle", false);
-                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
-                }
-            }
-            else
-            {
-                if(lookDirection.normalized.y > 0.5f)
-                {
-                    enemyAnimator.SetBool("MoveBack", true);
-                    enemyAnimator.SetBool("MoveLeft", false);
-                    enemyAnimator.SetBool("MoveRight", false);
-                    enemyAnimator.SetBool("MoveTop", false);
-                //  enemyAnimator.SetBool("Idle", false);
-                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
-                }
-                else if(lookDirection.normalized.y < -0.5f)
-                {
-                    enemyAnimator.SetBool("MoveRight", false);
-                    enemyAnimator.SetBool("MoveLeft", false);
-                    enemyAnimator.SetBool("MoveTop", true);
-                    enemyAnimator.SetBool("MoveBack", false);
-                //  enemyAnimator.SetBool("Idle", false);
-                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
-                }
-        }*
-
-  /*  else
-    {
-      enemyAnimator.SetBool("MoveRight", false);
-      enemyAnimator.SetBool("MoveLeft", false);
-      enemyAnimator.SetBool("MoveTop", false);
-      enemyAnimator.SetBool("MoveBack", false);
-      enemyAnimator.SetBool("Idle", true);
-    }*/
         }
 }
 
@@ -240,7 +185,7 @@ public class Enemy : PawnBase
 
     }
 
-    // петод разворачивающий оружие в сторону игрока
+    // метод разворачивающий оружие в сторону игрока
     void rangedWeaponRotation()
     {
 
