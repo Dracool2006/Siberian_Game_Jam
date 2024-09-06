@@ -15,6 +15,7 @@ public class Player : PawnBase
     public int healCount = 5;
     public int healTime = 50;
     public GameMenu gameMenu;
+    private Coroutine disableDaamgeSprite;
     //private variables
     private Rigidbody2D rb;
     private Vector2 mousePos;
@@ -60,8 +61,9 @@ public class Player : PawnBase
     #region Methods
     public override void Movement(Vector2 direction, float speed)
     {
-
-        rb.AddForce(direction * speed * Time.fixedDeltaTime);
+        if (direction.x > -1 || direction.x < 1 && direction.y > -1 || direction.y < 1)
+            rb.velocity = Vector2.zero;
+        rb.AddForce(direction.normalized * speed * Time.fixedDeltaTime,ForceMode2D.Impulse );
 
     }
 
@@ -78,6 +80,13 @@ public class Player : PawnBase
    }
 
 
+
+    IEnumerator DisableDamageSprite()
+    {
+        yield return new WaitForSeconds(1);
+        damageSprite.SetActive(false);
+
+    }
 
     void Rotation(float angle)
     {
@@ -150,12 +159,16 @@ public class Player : PawnBase
     public override void ChangeHP(int deltaHP)
     {
 
-      //print(deltaHP);
         if (deltaHP < 0)
         {
-            playerAnimator.SetTrigger("Damage");
-            AudioDamage.Play();
+            if (disableDaamgeSprite != null)
+                StopCoroutine(disableDaamgeSprite);
+
+            //enemyAnimator.SetTrigger("Damage");
+            damageSprite.SetActive(true);
+            disableDaamgeSprite = StartCoroutine(DisableDamageSprite());
         }
+
         SetCurrentHP(GetCurrentHP() + deltaHP);
         RescaleHealPoint();
         if(GetCurrentHP() <= 0 && gameObject.GetComponent<Collider2D>().enabled == true)

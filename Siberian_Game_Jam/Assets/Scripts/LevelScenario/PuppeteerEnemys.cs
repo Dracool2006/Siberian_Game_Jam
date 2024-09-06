@@ -105,7 +105,8 @@ public class PuppeteerEnemys : MonoBehaviour
                 //spawn melee
                 if (UnityEngine.Random.Range(0, 100) <= dataValid[2])
                 {
-                    NewEnemy = Instantiate(PrefabEnemyMelee, transform);
+                    //NewEnemy = Instantiate(PrefabEnemyMelee, transform);
+                    NewEnemy = Instantiate(PrefabEnemyRange, transform);
                 }
                 //spawn range
                 else

@@ -14,12 +14,12 @@ public class Enemy : PawnBase
     public PlayerDetector playerDetector;
     public Animator enemyAnimator;
     public OtherEnemyDetector otherEnemyDetector;
-
     private Transform target;
     [SerializeField] protected Transform bodySprite;
     [SerializeField] protected Rigidbody2D rb;
     protected bool isAttackCooldown = false;
 
+    Coroutine disableDaamgeSprite;
 
     public GameObject PrefabSoul;
 
@@ -92,7 +92,12 @@ public class Enemy : PawnBase
 
         if (deltaHP <0)
         {
-          enemyAnimator.SetTrigger("Damage");
+            if(disableDaamgeSprite !=null)
+                StopCoroutine(disableDaamgeSprite);
+
+            //enemyAnimator.SetTrigger("Damage");
+            damageSprite.SetActive(true);
+            disableDaamgeSprite = StartCoroutine(DisableDamageSprite());
         }
         SetCurrentHP(GetCurrentHP() + deltaHP);
         //Debug.Log(GetCurrentHP());
@@ -105,10 +110,24 @@ public class Enemy : PawnBase
         }
     }
 
+    IEnumerator DisableDamageSprite()
+    {
+        yield return new WaitForSeconds(1);
+        damageSprite.SetActive(false);
+
+    }
+
     // метод смерти
     public override void Death()
     {
-        if(AudioService.Instance && AudioDead)
+        SetIsDead(true);
+        if (disableDaamgeSprite != null)
+            StopCoroutine(disableDaamgeSprite);
+        damageSprite.SetActive(false);
+
+
+
+        if (AudioService.Instance && AudioDead)
         {
             AudioService.Instance.PlaySound(AudioDead);
         }
@@ -119,7 +138,8 @@ public class Enemy : PawnBase
         enemyAnimator.SetBool("Death", true);
         gameObject.GetComponent<Collider2D> ().enabled = false;
         rb.bodyType = RigidbodyType2D.Static;
-        SetIsDead (true);
+        
+        EquippedWeapon.GetComponent<Gun>().StopAllCoroutines();
         StartCoroutine(Disappear(3.0f));
         SoulGenerate();
         GameObject.FindWithTag("MainCamera").GetComponent<MainLogic>().EnemyDead();
@@ -131,9 +151,10 @@ public class Enemy : PawnBase
         soul.transform.position = transform.position;
     }
 
-    void SetAnimatorKeys(){
+    void SetAnimatorKeys()
+    {
 
-        if(state == States.passive)
+        if (state == States.passive)
         {
             enemyAnimator.SetBool("Idle", true);
         }
@@ -143,7 +164,7 @@ public class Enemy : PawnBase
 
             Vector2 normalizedLookDirection = lookDirection.normalized;
 
-            if(normalizedLookDirection.x > 0.5)
+            if (normalizedLookDirection.x > 0.5)
             {
                 normalizedLookDirection.x = 1;
             }
@@ -169,12 +190,62 @@ public class Enemy : PawnBase
                 normalizedLookDirection.y = 0;
             }
 
-           
+
+            /*
+
+            if (lookDirection.normalized.y < 0.5f && lookDirection.normalized.y > -0.5f)
+            {
+
+                if (lookDirection.normalized.x < -0.5f)
+                {
+                    //Debug.Log("MoveLeft");
+                    enemyAnimator.SetBool("MoveRight", false);
+                    enemyAnimator.SetBool("MoveLeft", true);
+                    enemyAnimator.SetBool("MoveTop", false);
+                    enemyAnimator.SetBool("MoveBack", false);
+                    //  enemyAnimator.SetBool("Idle", false);
+                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
+                }
+                else if (lookDirection.normalized.x > 0.5f)
+                {
+                    enemyAnimator.SetBool("MoveRight", true);
+                    enemyAnimator.SetBool("MoveLeft", false);
+                    enemyAnimator.SetBool("MoveTop", false);
+                    enemyAnimator.SetBool("MoveBack", false);
+                    //  enemyAnimator.SetBool("Idle", false);
+                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
+                }
+            }
+            else
+            {
+                if (lookDirection.normalized.y > 0.5f)
+                {
+                    enemyAnimator.SetBool("MoveBack", true);
+                    enemyAnimator.SetBool("MoveLeft", false);
+                    enemyAnimator.SetBool("MoveRight", false);
+                    enemyAnimator.SetBool("MoveTop", false);
+                    //  enemyAnimator.SetBool("Idle", false);
+                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
+                }
+                else if (lookDirection.normalized.y < -0.5f)
+                {
+                    enemyAnimator.SetBool("MoveRight", false);
+                    enemyAnimator.SetBool("MoveLeft", false);
+                    enemyAnimator.SetBool("MoveTop", true);
+                    enemyAnimator.SetBool("MoveBack", false);
+                    //  enemyAnimator.SetBool("Idle", false);
+                    transform.localScale = new Vector3(0.5f, transform.localScale.y, transform.localScale.y);
+                }
+            }
+            enemyAnimator.SetBool("Idle", false);
+        }*/
+
             enemyAnimator.SetFloat("Horizontal", normalizedLookDirection.x);
-            enemyAnimator.SetFloat("Vertical", normalizedLookDirection.y);
+            enemyAnimator.SetFloat("Vertical", -normalizedLookDirection.y);
+            enemyAnimator.SetBool("Idle", false);
 
         }
-}
+    }
 
 
     public virtual void AttackStart(){

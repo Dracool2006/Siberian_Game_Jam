@@ -12,7 +12,7 @@ public class PawnBase : MonoBehaviour
     private bool isDead = false;
     private int Soul = 10;
     public int LimitSoul = 100;
-
+    public GameObject damageSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,5 +93,12 @@ public class PawnBase : MonoBehaviour
     public void TakeAwaySoul()
     {
         Soul--;
+    }
+
+    IEnumerator DisableDamageSprite()
+    {
+        yield return new WaitForSeconds(1);
+        damageSprite.SetActive(false);
+
     }
 }

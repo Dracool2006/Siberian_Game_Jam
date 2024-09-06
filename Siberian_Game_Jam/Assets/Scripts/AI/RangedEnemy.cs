@@ -5,30 +5,28 @@ using UnityEngine;
 public class RangedEnemy : Enemy
 {
 
-  public float waitTimeBeforeShoot = 1f;
-    // Start is called before the first frame update
-    /*void Start()
+    public float waitTimeBeforeShoot = 1f;
+    public Coroutine waitAttack;
+
+  
+
+    public override void AttackStart()
     {
-      equippedweapon.GetComponent<Gun>().SetWeaponMode(1);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }*/
-
-
-    public override void AttackStart(){
-    //  anim.SetBool("Attack", true);
-    //  Debug.Log("EnemyAttack");
+        //  anim.SetBool("Attack", true);
+        //  Debug.Log("EnemyAttack");
+        if (GetIsDead())
+            return;
         state = States.attackig;
-        StartCoroutine(WaitToAttack(waitTimeBeforeShoot));
+        waitAttack = StartCoroutine(WaitToAttack(waitTimeBeforeShoot));
+
 
         //StartCoroutine(AttackCooldown(attackCooldownTime));
     }
 
-    public override void AttackEnd(){
+    public override void AttackEnd()
+    {
+        if (GetIsDead())
+            return;
         //anim.SetBool("Attack", false);
         state = States.lookingfor;
         //EquippedWeapon.SetAttackColliderActive(true);
@@ -36,10 +34,20 @@ public class RangedEnemy : Enemy
 
     IEnumerator WaitToAttack(float waitTime)
     {
-      yield return new WaitForSeconds(waitTime);
-      EquippedWeapon.GetComponent<Gun>().Shoot();
+        if (GetIsDead())
+            yield return null;
+        yield return new WaitForSeconds(waitTime);
+        if(EquippedWeapon.activeSelf)
+            EquippedWeapon.GetComponent<Gun>().Shoot();
 
     }
 
+    public override void Death()
+    {
+        base.Death();
 
+        if(waitAttack != null)
+            StopCoroutine(waitAttack);
+        
+    }
 }

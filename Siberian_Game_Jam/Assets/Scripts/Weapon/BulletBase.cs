@@ -7,6 +7,8 @@ public class BulletBase : MonoBehaviour
   public float speed = 10f;
   protected Rigidbody2D rb;
   public int damage = 2;
+  //пробиваня мощь
+  public int Power = 2;
   public Transform barrel;
   public float spreading = 0f;
   public bool isThisEnemybullet = false; // если false, то пуля может дамажит врагов, если true, то только игрока
@@ -35,7 +37,15 @@ public class BulletBase : MonoBehaviour
             if(other.gameObject.GetComponent<Enemy> ().state != States.dead && !other.gameObject.GetComponent<Enemy> ().GetIsDead())
             {
               other.gameObject.GetComponent<Enemy>().ChangeHP(damage);
-              Destroy(gameObject);
+                  if(Power > 0)
+                    {
+                        Power--;
+                    }
+                  else
+                    {
+                        Destroy(gameObject);
+                    }
+             
             }
           }
       }
